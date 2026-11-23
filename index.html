@@ -1,1 +1,499 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Bunny ♡</title>
+
+<style>
+* { box-sizing: border-box; }
+
+:root {
+  --pink: #d69aaf;
+  --dark: #966477;
+  --light: #fff7f7;
+  --cream: #fffdf9;
+}
+
+body {
+  margin: 0;
+  background: var(--light);
+  color: #795b67;
+  font-family: Georgia, serif;
+  text-align: center;
+}
+
+button { font-family: inherit; cursor: pointer; }
+
+.hero {
+  min-height: 100svh;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(145deg,#fff5f6,#f5dce5,#fffaf6);
+}
+
+.date {
+  font: 11px Arial;
+  letter-spacing: 4px;
+  color: #a8798a;
+}
+
+.bunny { font-size: 75px; margin: 25px; }
+
+h1 {
+  font-size: clamp(38px,10vw,58px);
+  font-weight: normal;
+  color: #a96880;
+  line-height: 1.2;
+  margin: 8px;
+}
+
+p { line-height: 1.8; }
+
+.primary, .small-btn {
+  border: 0;
+  border-radius: 30px;
+  background: var(--pink);
+  color: white;
+  padding: 14px 25px;
+  margin: 10px;
+  font-size: 14px;
+}
+
+section {
+  padding: 65px 20px;
+  max-width: 700px;
+  margin: auto;
+}
+
+h2 {
+  color: #ad7188;
+  font-size: 30px;
+  font-weight: normal;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #ae8795;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 5px 25px #d9b5c322;
+  margin: 20px 0;
+  line-height: 1.9;
+}
+
+.divider {
+  width: 55px;
+  height: 1px;
+  background: #d8aaba;
+  margin: 25px auto;
+}
+
+/* COUNTDOWN */
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.time-box {
+  background: white;
+  border-radius: 15px;
+  padding: 17px 12px;
+  min-width: 65px;
+  box-shadow: 0 4px 15px #d9b5c322;
+}
+
+.time-box strong {
+  display: block;
+  font-size: 25px;
+  color: #ad7188;
+}
+
+.time-box span {
+  font: 10px Arial;
+  letter-spacing: 1px;
+}
+
+/* PHOTO GALLERY */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.photo {
+  background: white;
+  padding: 9px 9px 17px;
+  border-radius: 5px;
+  box-shadow: 0 4px 15px #d9b5c333;
+  transform: rotate(-2deg);
+}
+
+.photo:nth-child(even) { transform: rotate(2deg); }
+
+.photo img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+  background: #f7e5eb;
+}
+
+.photo p {
+  font-size: 12px;
+  margin: 12px 0 0;
+}
+
+.photo-placeholder {
+  aspect-ratio: 1;
+  background: #f8e7ed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aa8291;
+  font-size: 13px;
+}
+
+/* LOVE REASONS */
+
+.reason {
+  text-align: left;
+  background: white;
+  padding: 18px;
+  margin: 12px 0;
+  border-radius: 15px;
+  border: 1px solid #f0dce4;
+  cursor: pointer;
+}
+
+.reason p { display: none; margin-bottom: 0; }
+.reason.open p { display: block; }
+
+/* LETTER */
+
+#letter {
+  display: none;
+  text-align: left;
+  white-space: pre-line;
+}
+
+#letter.open { display: block; }
+
+/* YES / NO */
+
+.tease-area {
+  position: relative;
+  min-height: 145px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  overflow: hidden;
+}
+
+#noBtn { background: #c5a5b1; }
+
+#yesMessage, #secret {
+  display: none;
+  background: white;
+  border-radius: 18px;
+  padding: 23px;
+  margin-top: 20px;
+  line-height: 1.8;
+}
+
+#yesMessage.show, #secret.show { display: block; }
+
+footer {
+  padding: 40px 20px;
+  color: #ad8192;
+  font-size: 13px;
+}
+
+@media(max-width:380px) {
+  .gallery { gap: 9px; }
+}
+</style>
+</head>
+
+<body>
+
+<!--
+EDIT YOUR DETAILS HERE!
+You can change the messages, reasons, and photo captions.
+-->
+
+<script>
+const CONFIG = {
+
+  birthday: "2026-12-04",
+
+  photos: [
+    {src:"bunny-photo-1.jpg", caption:"One of my favorite memories ♡"},
+    {src:"bunny-photo-2.jpg", caption:"A moment I'll always keep"},
+    {src:"bunny-photo-3.jpg", caption:"My favorite person"},
+    {src:"bunny-photo-4.jpg", caption:"Us, being us ♡"}
+  ],
+
+  reasons: [
+    ["Your smile ♡","It has a way of making an ordinary day better."],
+    ["Your personality","I love all the little things that make you YOU."],
+    ["Your heart","You mean more to me than words can explain."],
+    ["Simply you","I don't need a reason. I just love you."]
+  ],
+
+  letter: `My dearest Bunny,
+
+Happy birthday, my love! ♡
+
+I hope today reminds you of how special you are. I wish you happiness, beautiful opportunities, and countless reasons to smile.
+
+Thank you for being part of my life. I appreciate you more than you probably realize.
+
+I hope this little website makes you smile, because you deserve something made especially for you.
+
+I love you, always.
+
+Your person ♡`
+};
+</script>
+
+<!-- WELCOME -->
+
+<div class="hero">
+  <div class="date">DECEMBER 04, 2026</div>
+  <div class="bunny">🐰</div>
+  <h1>Happy Birthday,<br>Bunny ♡</h1>
+  <p>A little world made just for you.</p>
+
+  <button class="primary"
+  onclick="document.getElementById('welcome').scrollIntoView({behavior:'smooth'})">
+    Open your surprise ♡
+  </button>
+
+  <p style="font-size:12px">made with love, always.</p>
+</div>
+
+<!-- COUNTDOWN -->
+
+<section id="welcome">
+  <h2>Counting down to you ♡</h2>
+  <p class="subtitle">Your special day is almost here.</p>
+
+  <div class="countdown">
+    <div class="time-box"><strong id="days">00</strong><span>DAYS</span></div>
+    <div class="time-box"><strong id="hours">00</strong><span>HOURS</span></div>
+    <div class="time-box"><strong id="minutes">00</strong><span>MINUTES</span></div>
+    <div class="time-box"><strong id="seconds">00</strong><span>SECONDS</span></div>
+  </div>
+
+  <div class="divider"></div>
+  <h2>To my Bunny</h2>
+  <div class="card">
+    Today is all about you. I hope this little corner of the
+    internet reminds you how loved and appreciated you are.
+
+    You deserve all the beautiful things in this world. ♡
+  </div>
+</section>
+
+<!-- PHOTO GALLERY -->
+
+<section>
+  <h2>Our little memories ♡</h2>
+  <p class="subtitle">Some moments I want to keep forever.</p>
+
+  <div class="gallery" id="gallery"></div>
+  <p class="subtitle">Every picture has a little piece of my heart.</p>
+</section>
+
+<!-- REASONS -->
+
+<section>
+  <h2>Reasons why I love you</h2>
+  <p class="subtitle">Tap each card to reveal a little reason.</p>
+
+  <div id="reasons"></div>
+</section>
+
+<!-- LETTER -->
+
+<section>
+  <h2>A letter for you ♡</h2>
+  <p class="subtitle">Something I want you to read.</p>
+
+  <button class="primary" onclick="toggleLetter()">
+    Open your letter 💌
+  </button>
+
+  <div class="card" id="letter"></div>
+</section>
+
+<!-- TEASING GAME -->
+
+<section>
+  <h2>Wait... one question.</h2>
+  <p>Do you love me, Bunny? 🥺</p>
+
+  <div class="tease-area" id="teaseArea">
+    <button class="primary" onclick="sayYes()">YES ♡</button>
+    <button class="small-btn" id="noBtn"
+    onclick="moveNo()">NO 🙄</button>
+  </div>
+
+  <div id="yesMessage">
+    HEHE I KNEW IT!! 😭💕<br>
+    You're stuck with me. Happy birthday, my love! 🐰
+  </div>
+</section>
+
+<!-- HIDDEN MESSAGE -->
+
+<section>
+  <h2>A little secret...</h2>
+  <p>There's something hidden here. ♡</p>
+
+  <button class="primary" onclick="showSecret()">
+    Don't click this 👀
+  </button>
+
+  <div id="secret">
+    Surprise!! You're my favorite notification,
+    my favorite conversation, and one of my favorite
+    parts of life. I love you, Bunny. ♡
+  </div>
+</section>
+
+<footer>
+  Made with love, especially for Bunny ♡
+  <div style="font-size:25px;margin-top:12px">🐰💕</div>
+</footer>
+
+<script>
+
+// COUNTDOWN
+
+function updateCountdown() {
+  const target = new Date(CONFIG.birthday + "T00:00:00");
+  const now = new Date();
+  const diff = target - now;
+
+  if (diff <= 0) {
+    document.querySelector(".countdown").innerHTML =
+      "<h2>Happy Birthday, Bunny! ♡</h2>";
+    return;
+  }
+
+  document.getElementById("days").textContent =
+    Math.floor(diff / 86400000);
+
+  document.getElementById("hours").textContent =
+    Math.floor(diff / 3600000) % 24;
+
+  document.getElementById("minutes").textContent =
+    Math.floor(diff / 60000) % 60;
+
+  document.getElementById("seconds").textContent =
+    Math.floor(diff / 1000) % 60;
+}
+
+updateCountdown();
+setInterval(updateCountdown,1000);
+
+// PHOTO GALLERY
+
+const gallery = document.getElementById("gallery");
+
+CONFIG.photos.forEach(photo => {
+  const frame = document.createElement("div");
+  frame.className = "photo";
+
+  const img = document.createElement("img");
+  img.src = photo.src;
+  img.alt = photo.caption;
+
+  img.onerror = () => {
+    const placeholder = document.createElement("div");
+    placeholder.className = "photo-placeholder";
+    placeholder.textContent = "Your photo ♡";
+    img.replaceWith(placeholder);
+  };
+
+  const caption = document.createElement("p");
+  caption.textContent = photo.caption;
+
+  frame.append(img,caption);
+  gallery.appendChild(frame);
+});
+
+// REASONS
+
+const reasons = document.getElementById("reasons");
+
+CONFIG.reasons.forEach((reason,index) => {
+  const item = document.createElement("div");
+  item.className = "reason";
+
+  const heading = document.createElement("strong");
+  heading.textContent = "♡ " + reason[0];
+
+  const detail = document.createElement("p");
+  detail.textContent = reason[1];
+
+  item.append(heading,detail);
+  item.onclick = () => item.classList.toggle("open");
+
+  reasons.appendChild(item);
+});
+
+// LETTER
+
+function toggleLetter() {
+  document.getElementById("letter").textContent = CONFIG.letter;
+  document.getElementById("letter").classList.toggle("open");
+}
+
+// YES / NO GAME
+
+function sayYes() {
+  document.getElementById("yesMessage").classList.add("show");
+}
+
+function moveNo() {
+  const btn = document.getElementById("noBtn");
+  const area = document.getElementById("teaseArea");
+
+  const maxX = Math.max(0,area.clientWidth - btn.offsetWidth);
+  const maxY = Math.max(0,area.clientHeight - btn.offsetHeight);
+
+  btn.style.position = "absolute";
+  btn.style.left = Math.random() * maxX + "px";
+  btn.style.top = Math.random() * maxY + "px";
+}
+
+// HIDDEN MESSAGE
+
+function showSecret() {
+  document.getElementById("secret").classList.toggle("show");
+}
+
+</script>
+
+</body>
+</html>
+
+
+
