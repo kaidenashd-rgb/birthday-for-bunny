@@ -1,498 +1,318 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>For Bunny ♡</title>
 
 <style>
-* { box-sizing: border-box; }
-
-:root {
-  --pink: #d69aaf;
-  --dark: #966477;
-  --light: #fff7f7;
-  --cream: #fffdf9;
+*{box-sizing:border-box}
+body{
+ margin:0;
+ background:#fff7f5;
+ color:#76565f;
+ font-family:"Times New Roman",Times,serif;
+ text-align:center;
+ overflow-x:hidden;
 }
-
-body {
-  margin: 0;
-  background: var(--light);
-  color: #795b67;
-  font-family: Georgia, serif;
-  text-align: center;
+header{
+ background:linear-gradient(145deg,#f7dfe6,#fff4ef);
+ padding:75px 20px 60px;
+ position:relative;
+ border-bottom:1px solid #f0d5dc;
 }
-
-button { font-family: inherit; cursor: pointer; }
-
-.hero {
-  min-height: 100svh;
-  padding: 40px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(145deg,#fff5f6,#f5dce5,#fffaf6);
+h1{
+ font-size:clamp(42px,9vw,64px);
+ font-weight:normal;
+ color:#a66f7e;
+ margin:16px 0;
 }
-
-.date {
-  font: 11px Arial;
-  letter-spacing: 4px;
-  color: #a8798a;
+h2{
+ color:#a66f7e;
+ font-weight:normal;
+ font-size:27px;
 }
-
-.bunny { font-size: 75px; margin: 25px; }
-
-h1 {
-  font-size: clamp(38px,10vw,58px);
-  font-weight: normal;
-  color: #a96880;
-  line-height: 1.2;
-  margin: 8px;
+p{line-height:1.9}
+.subtitle{
+ color:#a78089;
+ font-style:italic;
 }
-
-p { line-height: 1.8; }
-
-.primary, .small-btn {
-  border: 0;
-  border-radius: 30px;
-  background: var(--pink);
-  color: white;
-  padding: 14px 25px;
-  margin: 10px;
-  font-size: 14px;
+section{
+ max-width:850px;
+ margin:55px auto;
+ padding:0 20px;
 }
-
-section {
-  padding: 65px 20px;
-  max-width: 700px;
-  margin: auto;
+.card{
+ background:#fffdfc;
+ border:1px solid #f0dce0;
+ border-radius:20px;
+ padding:25px;
+ margin:17px 0;
+ box-shadow:0 7px 25px #b98b9410;
 }
-
-h2 {
-  color: #ad7188;
-  font-size: 30px;
-  font-weight: normal;
+button{
+ background:#dba9b7;
+ color:white;
+ border:1px solid #dba9b7;
+ border-radius:30px;
+ padding:12px 23px;
+ margin:7px;
+ font-family:inherit;
+ font-size:16px;
+ cursor:pointer;
 }
-
-.subtitle {
-  font-size: 13px;
-  color: #ae8795;
+button:hover{
+ background:#bf8797;
 }
-
-.card {
-  background: white;
-  padding: 25px;
-  border-radius: 20px;
-  box-shadow: 0 5px 25px #d9b5c322;
-  margin: 20px 0;
-  line-height: 1.9;
+.gallery{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:16px;
 }
-
-.divider {
-  width: 55px;
-  height: 1px;
-  background: #d8aaba;
-  margin: 25px auto;
+.photo{
+ background:#fffdfc;
+ padding:9px;
+ border:1px solid #efdce0;
+ border-radius:15px;
 }
-
-/* COUNTDOWN */
-
-.countdown {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
+.photo img{
+ width:100%;
+ aspect-ratio:1/1;
+ object-fit:cover;
+ border-radius:10px;
+ background:#f8e8eb;
 }
-
-.time-box {
-  background: white;
-  border-radius: 15px;
-  padding: 17px 12px;
-  min-width: 65px;
-  box-shadow: 0 4px 15px #d9b5c322;
+.photo p{
+ font-size:14px;
+ margin:9px 0 4px;
 }
-
-.time-box strong {
-  display: block;
-  font-size: 25px;
-  color: #ad7188;
+.letter{
+ display:none;
+ padding:18px;
+ margin-top:15px;
+ background:#fff3f5;
+ border:1px solid #f2dce2;
+ border-radius:15px;
+ line-height:2;
 }
-
-.time-box span {
-  font: 10px Arial;
-  letter-spacing: 1px;
+.reason{cursor:pointer;transition:.25s}
+.reason:hover{transform:translateY(-3px)}
+#mainMessage{
+ white-space:pre-wrap;
+ line-height:2.1;
 }
-
-/* PHOTO GALLERY */
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(2,minmax(0,1fr));
-  gap: 15px;
-  margin-top: 25px;
+#teaseAnswer{
+ min-height:50px;
+ color:#a66f7e;
+ line-height:1.8;
 }
-
-.photo {
-  background: white;
-  padding: 9px 9px 17px;
-  border-radius: 5px;
-  box-shadow: 0 4px 15px #d9b5c333;
-  transform: rotate(-2deg);
+footer{
+ background:#f8e6ea;
+ padding:38px 15px;
+ color:#a78089;
+ border-top:1px solid #efd8de;
 }
-
-.photo:nth-child(even) { transform: rotate(2deg); }
-
-.photo img {
-  width: 100%;
-  aspect-ratio: 1;
-  object-fit: cover;
-  display: block;
-  background: #f7e5eb;
+.sticker{
+ position:fixed;
+ z-index:0;
+ pointer-events:none;
+ opacity:.35;
+ animation:float 6s ease-in-out infinite;
 }
-
-.photo p {
-  font-size: 12px;
-  margin: 12px 0 0;
+.s1{top:13%;left:3%;font-size:27px}
+.s2{top:30%;right:4%;font-size:21px;animation-delay:1s}
+.s3{top:48%;left:4%;font-size:23px;animation-delay:2s}
+.s4{top:66%;right:3%;font-size:27px;animation-delay:1.5s}
+.s5{top:84%;left:7%;font-size:21px;animation-delay:2.5s}
+.s6{top:8%;right:8%;font-size:20px;animation-delay:3s}
+.s7{top:94%;right:10%;font-size:23px;animation-delay:1s}
+@keyframes float{
+ 0%,100%{transform:translateY(0) rotate(-5deg)}
+ 50%{transform:translateY(-12px) rotate(5deg)}
 }
-
-.photo-placeholder {
-  aspect-ratio: 1;
-  background: #f8e7ed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #aa8291;
-  font-size: 13px;
-}
-
-/* LOVE REASONS */
-
-.reason {
-  text-align: left;
-  background: white;
-  padding: 18px;
-  margin: 12px 0;
-  border-radius: 15px;
-  border: 1px solid #f0dce4;
-  cursor: pointer;
-}
-
-.reason p { display: none; margin-bottom: 0; }
-.reason.open p { display: block; }
-
-/* LETTER */
-
-#letter {
-  display: none;
-  text-align: left;
-  white-space: pre-line;
-}
-
-#letter.open { display: block; }
-
-/* YES / NO */
-
-.tease-area {
-  position: relative;
-  min-height: 145px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  overflow: hidden;
-}
-
-#noBtn { background: #c5a5b1; }
-
-#yesMessage, #secret {
-  display: none;
-  background: white;
-  border-radius: 18px;
-  padding: 23px;
-  margin-top: 20px;
-  line-height: 1.8;
-}
-
-#yesMessage.show, #secret.show { display: block; }
-
-footer {
-  padding: 40px 20px;
-  color: #ad8192;
-  font-size: 13px;
-}
-
-@media(max-width:380px) {
-  .gallery { gap: 9px; }
+main{position:relative;z-index:1}
+header,footer{position:relative;z-index:1}
+@media(max-width:480px){
+ .gallery{gap:9px}
+ .card{padding:19px}
 }
 </style>
 </head>
 
 <body>
 
-<!--
-EDIT YOUR DETAILS HERE!
-You can change the messages, reasons, and photo captions.
--->
+<div class="sticker s1">🐰</div>
+<div class="sticker s2">♡</div>
+<div class="sticker s3">🌷</div>
+<div class="sticker s4">🐇</div>
+<div class="sticker s5">♡</div>
+<div class="sticker s6">🌸</div>
+<div class="sticker s7">✨</div>
 
-<script>
-const CONFIG = {
+<header>
+ <div>♡ a little something made with love ♡</div>
+ <h1>Happy Birthday, Bunny</h1>
+ <p class="subtitle">For the girl who makes my world a little softer.</p>
+ <h2 id="countdown"></h2>
+ <div style="font-size:23px">🐰　♡　🌷　♡　🐰</div>
+</header>
 
-  birthday: "2026-12-04",
-
-  photos: [
-    {src:"bunny-photo-1.jpg", caption:"One of my favorite memories ♡"},
-    {src:"bunny-photo-2.jpg", caption:"A moment I'll always keep"},
-    {src:"bunny-photo-3.jpg", caption:"My favorite person"},
-    {src:"bunny-photo-4.jpg", caption:"Us, being us ♡"}
-  ],
-
-  reasons: [
-    ["Your smile ♡","It has a way of making an ordinary day better."],
-    ["Your personality","I love all the little things that make you YOU."],
-    ["Your heart","You mean more to me than words can explain."],
-    ["Simply you","I don't need a reason. I just love you."]
-  ],
-
-  letter: `My dearest Bunny,
-
-Happy birthday, my love! ♡
-
-I hope today reminds you of how special you are. I wish you happiness, beautiful opportunities, and countless reasons to smile.
-
-Thank you for being part of my life. I appreciate you more than you probably realize.
-
-I hope this little website makes you smile, because you deserve something made especially for you.
-
-I love you, always.
-
-Your person ♡`
-};
-</script>
-
-<!-- WELCOME -->
-
-<div class="hero">
-  <div class="date">DECEMBER 04, 2026</div>
-  <div class="bunny">🐰</div>
-  <h1>Happy Birthday,<br>Bunny ♡</h1>
-  <p>A little world made just for you.</p>
-
-  <button class="primary"
-  onclick="document.getElementById('welcome').scrollIntoView({behavior:'smooth'})">
-    Open your surprise ♡
-  </button>
-
-  <p style="font-size:12px">made with love, always.</p>
-</div>
-
-<!-- COUNTDOWN -->
-
-<section id="welcome">
-  <h2>Counting down to you ♡</h2>
-  <p class="subtitle">Your special day is almost here.</p>
-
-  <div class="countdown">
-    <div class="time-box"><strong id="days">00</strong><span>DAYS</span></div>
-    <div class="time-box"><strong id="hours">00</strong><span>HOURS</span></div>
-    <div class="time-box"><strong id="minutes">00</strong><span>MINUTES</span></div>
-    <div class="time-box"><strong id="seconds">00</strong><span>SECONDS</span></div>
-  </div>
-
-  <div class="divider"></div>
-  <h2>To my Bunny</h2>
-  <div class="card">
-    Today is all about you. I hope this little corner of the
-    internet reminds you how loved and appreciated you are.
-
-    You deserve all the beautiful things in this world. ♡
-  </div>
-</section>
-
-<!-- PHOTO GALLERY -->
+<main>
 
 <section>
-  <h2>Our little memories ♡</h2>
-  <p class="subtitle">Some moments I want to keep forever.</p>
+ <h2>♡ A letter for you ♡</h2>
+ <p class="subtitle">A few words from me to you.</p>
+ <div class="card">
+  <p id="mainMessage">WRITE YOUR OWN BIRTHDAY MESSAGE HERE ♡
 
-  <div class="gallery" id="gallery"></div>
-  <p class="subtitle">Every picture has a little piece of my heart.</p>
+Replace this with your own birthday message.
+You can make it as long, sweet, silly, or sentimental as you want.
+
+Happy birthday, Bunny! ♡</p>
+ </div>
 </section>
 
-<!-- REASONS -->
-
 <section>
-  <h2>Reasons why I love you</h2>
-  <p class="subtitle">Tap each card to reveal a little reason.</p>
-
-  <div id="reasons"></div>
+ <h2>♡ Our little memories ♡</h2>
+ <p class="subtitle">Little moments I want to keep forever.</p>
+ <div class="gallery">
+  <div class="photo"><img src="bunny-photo-1.jpg" alt="Memory 1"><p>our little memory ♡</p></div>
+  <div class="photo"><img src="bunny-photo-2.jpg" alt="Memory 2"><p>one of my favorites</p></div>
+  <div class="photo"><img src="bunny-photo-3.jpg" alt="Memory 3"><p>my pretty girl</p></div>
+  <div class="photo"><img src="bunny-photo-4.jpg" alt="Memory 4"><p>another favorite</p></div>
+  <div class="photo"><img src="bunny-photo-5.jpg" alt="Memory 5"><p>a moment with you</p></div>
+  <div class="photo"><img src="bunny-photo-6.jpg" alt="Memory 6"><p>always worth remembering</p></div>
+  <div class="photo"><img src="bunny-photo-7.jpg" alt="Memory 7"><p>my favorite person</p></div>
+  <div class="photo"><img src="bunny-photo-8.jpg" alt="Memory 8"><p>to many more memories</p></div>
+ </div>
 </section>
 
-<!-- LETTER -->
-
 <section>
-  <h2>A letter for you ♡</h2>
-  <p class="subtitle">Something I want you to read.</p>
-
-  <button class="primary" onclick="toggleLetter()">
-    Open your letter 💌
-  </button>
-
-  <div class="card" id="letter"></div>
+ <h2>♡ Reasons why I love you ♡</h2>
+ <p class="subtitle">Tap each little card.</p>
+ <div class="card reason" onclick="reveal('r1')">
+  Your smile ♡
+  <div class="letter" id="r1">It makes ordinary days feel special.</div>
+ </div>
+ <div class="card reason" onclick="reveal('r2')">
+  Your personality ♡
+  <div class="letter" id="r2">I love all the little things that make you YOU.</div>
+ </div>
+ <div class="card reason" onclick="reveal('r3')">
+  The way you care ♡
+  <div class="letter" id="r3">You make me feel appreciated in ways you might not even notice.</div>
+ </div>
+ <div class="card reason" onclick="reveal('r4')">
+  Simply being you ♡
+  <div class="letter" id="r4">I wouldn't trade the person you are for anyone else.</div>
+ </div>
 </section>
 
-<!-- TEASING GAME -->
-
 <section>
-  <h2>Wait... one question.</h2>
-  <p>Do you love me, Bunny? 🥺</p>
+ <h2>♡ A little secret ♡</h2>
+ <div class="card">
+  <p>There's a letter waiting for you...</p>
+  <button onclick="reveal('secretLetter')">Open your letter 💌</button>
+  <div class="letter" id="secretLetter">
+   My Bunny,
 
-  <div class="tease-area" id="teaseArea">
-    <button class="primary" onclick="sayYes()">YES ♡</button>
-    <button class="small-btn" id="noBtn"
-    onclick="moveNo()">NO 🙄</button>
+   I hope you always know how special you are.
+   Thank you for being part of my life.
+   You deserve all the happiness in the world.
+
+   With lots of love, ♡
   </div>
-
-  <div id="yesMessage">
-    HEHE I KNEW IT!! 😭💕<br>
-    You're stuck with me. Happy birthday, my love! 🐰
-  </div>
+ </div>
 </section>
-
-<!-- HIDDEN MESSAGE -->
 
 <section>
-  <h2>A little secret...</h2>
-  <p>There's something hidden here. ♡</p>
-
-  <button class="primary" onclick="showSecret()">
-    Don't click this 👀
-  </button>
-
-  <div id="secret">
-    Surprise!! You're my favorite notification,
-    my favorite conversation, and one of my favorite
-    parts of life. I love you, Bunny. ♡
+ <h2>♡ Something hidden ♡</h2>
+ <div class="card">
+  <p>Can you find the little surprise?</p>
+  <button onclick="reveal('hidden')">Tap to reveal ✨</button>
+  <div class="letter" id="hidden">
+   Psst... you're my favorite notification. Don't let it get to your head. 🤭💕
   </div>
+ </div>
 </section>
+
+<section>
+ <h2>♡ A very important question ♡</h2>
+ <div class="card">
+  <h3>Do you love me? 🐰</h3>
+  <button onclick="answer('YES')">YES, obviously! 💗</button>
+  <button onclick="answer('NO')">No 😈</button>
+  <p id="teaseAnswer"></p>
+ </div>
+</section>
+
+<section>
+ <h2>♡ More questions for Bunny ♡</h2>
+ <div class="card">
+  <p>Am I your favorite person?</p>
+  <button onclick="reply('favorite','I KNEW IT. Good answer. 🤭')">YES</button>
+  <button onclick="reply('favorite','Excuse me??? Try again. 😭')">NO</button>
+  <p id="favorite"></p>
+  <hr style="border:0;border-top:1px solid #f2dfe3">
+  <p>Do I deserve extra kisses today?</p>
+  <button onclick="reply('kisses','Correct. I accept. 💋')">YES</button>
+  <button onclick="reply('kisses','Wrong answer. Please reconsider. 😤')">NO</button>
+  <p id="kisses"></p>
+  <hr style="border:0;border-top:1px solid #f2dfe3">
+  <p>Will you stay my Bunny?</p>
+  <button onclick="reply('bunny','That is the only acceptable answer. 🐰💕')">ALWAYS</button>
+  <button onclick="reply('bunny','I am filing a complaint. 😭')">NO</button>
+  <p id="bunny"></p>
+ </div>
+</section>
+
+</main>
 
 <footer>
-  Made with love, especially for Bunny ♡
-  <div style="font-size:25px;margin-top:12px">🐰💕</div>
+ Made with lots of love, just for Bunny ♡
+ <div style="font-size:27px;margin-top:13px">🐰 🌷 💗 ✨</div>
 </footer>
 
 <script>
+const birthday = new Date("2026-12-04T00:00:00");
 
-// COUNTDOWN
-
-function updateCountdown() {
-  const target = new Date(CONFIG.birthday + "T00:00:00");
-  const now = new Date();
-  const diff = target - now;
-
-  if (diff <= 0) {
-    document.querySelector(".countdown").innerHTML =
-      "<h2>Happy Birthday, Bunny! ♡</h2>";
-    return;
-  }
-
-  document.getElementById("days").textContent =
-    Math.floor(diff / 86400000);
-
-  document.getElementById("hours").textContent =
-    Math.floor(diff / 3600000) % 24;
-
-  document.getElementById("minutes").textContent =
-    Math.floor(diff / 60000) % 60;
-
-  document.getElementById("seconds").textContent =
-    Math.floor(diff / 1000) % 60;
+function updateCountdown(){
+ const now=new Date();
+ const diff=birthday-now;
+ const el=document.getElementById("countdown");
+ if(diff<=0){
+  el.textContent="It's your special day, Bunny! ♡";
+  return;
+ }
+ const days=Math.floor(diff/86400000);
+ const hours=Math.floor(diff%86400000/3600000);
+ const minutes=Math.floor(diff%3600000/60000);
+ el.textContent=days+" days, "+hours+" hours and "+minutes+" minutes to go ♡";
 }
-
 updateCountdown();
-setInterval(updateCountdown,1000);
+setInterval(updateCountdown,60000);
 
-// PHOTO GALLERY
-
-const gallery = document.getElementById("gallery");
-
-CONFIG.photos.forEach(photo => {
-  const frame = document.createElement("div");
-  frame.className = "photo";
-
-  const img = document.createElement("img");
-  img.src = photo.src;
-  img.alt = photo.caption;
-
-  img.onerror = () => {
-    const placeholder = document.createElement("div");
-    placeholder.className = "photo-placeholder";
-    placeholder.textContent = "Your photo ♡";
-    img.replaceWith(placeholder);
-  };
-
-  const caption = document.createElement("p");
-  caption.textContent = photo.caption;
-
-  frame.append(img,caption);
-  gallery.appendChild(frame);
-});
-
-// REASONS
-
-const reasons = document.getElementById("reasons");
-
-CONFIG.reasons.forEach((reason,index) => {
-  const item = document.createElement("div");
-  item.className = "reason";
-
-  const heading = document.createElement("strong");
-  heading.textContent = "♡ " + reason[0];
-
-  const detail = document.createElement("p");
-  detail.textContent = reason[1];
-
-  item.append(heading,detail);
-  item.onclick = () => item.classList.toggle("open");
-
-  reasons.appendChild(item);
-});
-
-// LETTER
-
-function toggleLetter() {
-  document.getElementById("letter").textContent = CONFIG.letter;
-  document.getElementById("letter").classList.toggle("open");
+function reveal(id){
+ const el=document.getElementById(id);
+ el.style.display=el.style.display==="block"?"none":"block";
 }
 
-// YES / NO GAME
-
-function sayYes() {
-  document.getElementById("yesMessage").classList.add("show");
+function answer(choice){
+ const el=document.getElementById("teaseAnswer");
+ if(choice==="YES"){
+  el.textContent="GOOD. I knew you couldn't resist me. 🤭💗";
+ }else{
+  el.textContent="Wrong answer. You have one more chance. 😈";
+ }
 }
 
-function moveNo() {
-  const btn = document.getElementById("noBtn");
-  const area = document.getElementById("teaseArea");
-
-  const maxX = Math.max(0,area.clientWidth - btn.offsetWidth);
-  const maxY = Math.max(0,area.clientHeight - btn.offsetHeight);
-
-  btn.style.position = "absolute";
-  btn.style.left = Math.random() * maxX + "px";
-  btn.style.top = Math.random() * maxY + "px";
+function reply(id,message){
+ document.getElementById(id).textContent=message;
 }
-
-// HIDDEN MESSAGE
-
-function showSecret() {
-  document.getElementById("secret").classList.toggle("show");
-}
-
 </script>
 
 </body>
+</html>
 
-
-  
 
