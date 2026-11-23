@@ -3,316 +3,1045 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Bunny ♡</title>
 
 <style>
-*{box-sizing:border-box}
-body{
- margin:0;
- background:#fff7f5;
- color:#76565f;
- font-family:"Times New Roman",Times,serif;
- text-align:center;
- overflow-x:hidden;
+:root {
+  --pink: #e8a9b9;
+  --dark-pink: #bd758d;
+  --light-pink: #fff0f3;
+  --cream: #fffaf5;
+  --text: #76515c;
+  --white: #ffffff;
 }
-header{
- background:linear-gradient(145deg,#f7dfe6,#fff4ef);
- padding:75px 20px 60px;
- position:relative;
- border-bottom:1px solid #f0d5dc;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-h1{
- font-size:clamp(42px,9vw,64px);
- font-weight:normal;
- color:#a66f7e;
- margin:16px 0;
+
+html {
+  scroll-behavior: smooth;
 }
-h2{
- color:#a66f7e;
- font-weight:normal;
- font-size:27px;
+
+body {
+  background: var(--cream);
+  color: var(--text);
+  font-family: "Times New Roman", Times, serif;
+  overflow-x: hidden;
+  line-height: 1.6;
 }
-p{line-height:1.9}
-.subtitle{
- color:#a78089;
- font-style:italic;
+
+button {
+  font-family: inherit;
 }
-section{
- max-width:850px;
- margin:55px auto;
- padding:0 20px;
+
+section {
+  position: relative;
+  padding: 85px 20px;
+  overflow: hidden;
 }
-.card{
- background:#fffdfc;
- border:1px solid #f0dce0;
- border-radius:20px;
- padding:25px;
- margin:17px 0;
- box-shadow:0 7px 25px #b98b9410;
+
+h1, h2, h3 {
+  font-weight: normal;
+  line-height: 1.25;
 }
-button{
- background:#dba9b7;
- color:white;
- border:1px solid #dba9b7;
- border-radius:30px;
- padding:12px 23px;
- margin:7px;
- font-family:inherit;
- font-size:16px;
- cursor:pointer;
+
+h2 {
+  font-size: clamp(2rem, 6vw, 2.8rem);
+  text-align: center;
+  margin-bottom: 12px;
+  color: #a9687e;
 }
-button:hover{
- background:#bf8797;
+
+.subtitle {
+  text-align: center;
+  font-style: italic;
+  margin: 0 auto 38px;
+  color: #a9818b;
 }
-.gallery{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:16px;
+
+.small-heading {
+  color: var(--dark-pink);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  text-align: center;
+  margin-bottom: 12px;
 }
-.photo{
- background:#fffdfc;
- padding:9px;
- border:1px solid #efdce0;
- border-radius:15px;
+
+.container {
+  max-width: 1050px;
+  margin: auto;
+  position: relative;
+  z-index: 2;
 }
-.photo img{
- width:100%;
- aspect-ratio:1/1;
- object-fit:cover;
- border-radius:10px;
- background:#f8e8eb;
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
 }
-.photo p{
- font-size:14px;
- margin:9px 0 4px;
+
+button {
+  cursor: pointer;
 }
-.letter{
- display:none;
- padding:18px;
- margin-top:15px;
- background:#fff3f5;
- border:1px solid #f2dce2;
- border-radius:15px;
- line-height:2;
+
+.soft-button {
+  display: inline-block;
+  border: 1px solid #e6b2c0;
+  background: #fff7f8;
+  color: #a9687e;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 1rem;
+  transition: .25s;
 }
-.reason{cursor:pointer;transition:.25s}
-.reason:hover{transform:translateY(-3px)}
-#mainMessage{
- white-space:pre-wrap;
- line-height:2.1;
+
+.soft-button:hover {
+  background: #f5dce3;
+  transform: translateY(-2px);
 }
-#teaseAnswer{
- min-height:50px;
- color:#a66f7e;
- line-height:1.8;
+
+/* Sakura petals */
+
+#sakura {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 20;
 }
-footer{
- background:#f8e6ea;
- padding:38px 15px;
- color:#a78089;
- border-top:1px solid #efd8de;
+
+.petal {
+  position: absolute;
+  top: -35px;
+  width: 12px;
+  height: 17px;
+  background: linear-gradient(135deg, #ffe5eb, #e9a6b8);
+  border-radius: 100% 0 100% 0;
+  opacity: .75;
+  animation: falling linear infinite;
 }
-.sticker{
- position:fixed;
- z-index:0;
- pointer-events:none;
- opacity:.35;
- animation:float 6s ease-in-out infinite;
+
+@keyframes falling {
+  0% {
+    transform: translate3d(0, -40px, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(var(--drift), 50vh, 0) rotate(180deg);
+  }
+  100% {
+    transform: translate3d(0, 110vh, 0) rotate(360deg);
+  }
 }
-.s1{top:13%;left:3%;font-size:27px}
-.s2{top:30%;right:4%;font-size:21px;animation-delay:1s}
-.s3{top:48%;left:4%;font-size:23px;animation-delay:2s}
-.s4{top:66%;right:3%;font-size:27px;animation-delay:1.5s}
-.s5{top:84%;left:7%;font-size:21px;animation-delay:2.5s}
-.s6{top:8%;right:8%;font-size:20px;animation-delay:3s}
-.s7{top:94%;right:10%;font-size:23px;animation-delay:1s}
-@keyframes float{
- 0%,100%{transform:translateY(0) rotate(-5deg)}
- 50%{transform:translateY(-12px) rotate(5deg)}
+
+/* Sticker decorations */
+
+.sticker {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: .95;
+  filter: drop-shadow(0 3px 3px #d9aab544);
 }
-main{position:relative;z-index:1}
-header,footer{position:relative;z-index:1}
-@media(max-width:480px){
- .gallery{gap:9px}
- .card{padding:19px}
+
+.sticker.small {
+  width: 65px;
+  height: 65px;
+}
+
+.sticker.large {
+  width: 120px;
+  height: 120px;
+}
+
+.sticker-left {
+  left: 2%;
+  top: 30px;
+}
+
+.sticker-right {
+  right: 2%;
+  bottom: 25px;
+}
+
+.sticker-top-right {
+  right: 4%;
+  top: 25px;
+}
+
+/* Navigation */
+
+nav {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  padding: 17px 12px;
+  background: #fff9f7;
+  border-bottom: 1px solid #f4e2e5;
+}
+
+nav a {
+  color: #a9687e;
+  text-decoration: none;
+  font-size: .95rem;
+}
+
+nav a:hover {
+  color: #d28ba1;
+}
+
+/* Hero */
+
+.hero {
+  min-height: 90vh;
+  background: linear-gradient(145deg, #fff1f4, #fffaf5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 90px 20px;
+}
+
+.hero-content {
+  max-width: 720px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 10vw, 5.8rem);
+  color: #b8758b;
+  margin: 12px 0;
+}
+
+.hero p {
+  font-size: 1.15rem;
+  font-style: italic;
+  margin-bottom: 22px;
+}
+
+.hero .date {
+  letter-spacing: 4px;
+  font-size: .85rem;
+  color: #bd8796;
+}
+
+.hero-decoration {
+  font-size: 1rem;
+  color: #c98c9e;
+  letter-spacing: 5px;
+  margin-bottom: 10px;
+}
+
+/* Countdown */
+
+.countdown-section {
+  background: #fffaf7;
+  text-align: center;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.time-box {
+  background: #fff0f3;
+  border: 1px solid #f0d4dc;
+  border-radius: 18px;
+  min-width: 90px;
+  padding: 18px 14px;
+}
+
+.time-box strong {
+  display: block;
+  font-size: 2rem;
+  color: #b8758b;
+  font-weight: normal;
+}
+
+.time-box span {
+  font-size: .8rem;
+  letter-spacing: 1px;
+  color: #a9818b;
+}
+
+/* Birthday message */
+
+.message-section {
+  background: #fdf0f2;
+  text-align: center;
+}
+
+.message-card {
+  max-width: 760px;
+  margin: auto;
+  background: #fffaf8;
+  padding: clamp(25px, 6vw, 55px);
+  border-radius: 25px;
+  border: 1px solid #f0dce1;
+  box-shadow: 0 10px 30px #d9aab522;
+}
+
+.message-card p {
+  font-size: 1.1rem;
+  line-height: 2;
+  white-space: pre-line;
+}
+
+/* Memories */
+
+.memories-section {
+  background: #fffaf5;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.photo {
+  background: white;
+  border: 7px solid white;
+  border-radius: 12px;
+  box-shadow: 0 5px 18px #bd879622;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s;
+}
+
+.photo:hover img {
+  transform: scale(1.05);
+}
+
+/* Reasons */
+
+.reasons-section {
+  background: #fff0f3;
+}
+
+.reasons-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 17px;
+  max-width: 850px;
+  margin: auto;
+}
+
+.reason-card {
+  padding: 24px;
+  text-align: center;
+  background: #fffaf8;
+  border: 1px solid #f0dce1;
+  border-radius: 18px;
+  font-size: 1.1rem;
+  box-shadow: 0 5px 15px #d9aab522;
+}
+
+/* Letters */
+
+.letters-section {
+  background: #fffaf5;
+}
+
+.letters-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.letter-card {
+  text-align: center;
+  padding: 25px 16px;
+  border: 1px solid #efd7de;
+  background: #fff3f5;
+  border-radius: 20px;
+}
+
+.envelope {
+  font-size: 2.8rem;
+  margin-bottom: 12px;
+}
+
+.letter-card h3 {
+  color: #ae7185;
+  margin-bottom: 15px;
+}
+
+.letter-content {
+  display: none;
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 15px;
+  white-space: pre-line;
+  line-height: 1.7;
+}
+
+.letter-content.open {
+  display: block;
+}
+
+/* Hidden messages */
+
+.hidden-section {
+  background: #fdf0f2;
+  text-align: center;
+}
+
+.hidden-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+.hidden-button {
+  background: #fffaf8;
+  border: 1px solid #eccbd5;
+  color: #a9687e;
+  border-radius: 25px;
+  padding: 15px 23px;
+  font-size: 1rem;
+}
+
+.hidden-button:hover {
+  background: #f7dfe6;
+}
+
+.hidden-result {
+  display: none;
+  background: #fffaf8;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 18px auto 0;
+  max-width: 500px;
+  border: 1px solid #efd7de;
+  white-space: pre-line;
+}
+
+/* Teasing questions */
+
+.tease-section {
+  background: #fffaf5;
+  text-align: center;
+}
+
+.question-card {
+  background: #fff0f3;
+  border: 1px solid #efd4dc;
+  border-radius: 20px;
+  padding: 25px;
+  max-width: 600px;
+  margin: 18px auto;
+}
+
+.question-card h3 {
+  color: #a9687e;
+  font-size: 1.35rem;
+  margin-bottom: 17px;
+}
+
+.answer-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.answer-buttons button {
+  min-width: 90px;
+}
+
+.answer-result {
+  margin-top: 15px;
+  min-height: 25px;
+  color: #a9687e;
+  font-style: italic;
+}
+
+/* Music */
+
+.music-section {
+  background: #fdf0f2;
+}
+
+.music-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.music-card {
+  background: #fffaf8;
+  padding: 18px;
+  border: 1px solid #efd7de;
+  border-radius: 18px;
+  text-align: center;
+}
+
+.music-card h3 {
+  margin-bottom: 12px;
+  color: #a9687e;
+}
+
+.music-card iframe {
+  width: 100%;
+  height: 152px;
+  border: none;
+  border-radius: 12px;
+}
+
+/* Footer */
+
+footer {
+  background: #f5dfe5;
+  text-align: center;
+  padding: 45px 20px;
+  color: #9c6a7b;
+}
+
+footer p {
+  margin: 7px;
+}
+
+@media (max-width: 750px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .letters-grid,
+  .music-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reasons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sticker {
+    width: 65px;
+    height: 65px;
+  }
+
+  .sticker.large {
+    width: 85px;
+    height: 85px;
+  }
+
+  nav {
+    gap: 12px;
+  }
+
+  nav a {
+    font-size: .85rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .petal {
+    animation: none;
+    display: none;
+  }
+
+  * {
+    transition: none !important;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="sticker s1">🐰</div>
-<div class="sticker s2">♡</div>
-<div class="sticker s3">🌷</div>
-<div class="sticker s4">🐇</div>
-<div class="sticker s5">♡</div>
-<div class="sticker s6">🌸</div>
-<div class="sticker s7">✨</div>
+<!-- Sakura petals -->
+<div id="sakura" aria-hidden="true"></div>
 
-<header>
- <div>♡ a little something made with love ♡</div>
- <h1>Happy Birthday, Bunny</h1>
- <p class="subtitle">For the girl who makes my world a little softer.</p>
- <h2 id="countdown"></h2>
- <div style="font-size:23px">🐰　♡　🌷　♡　🐰</div>
-</header>
+<!-- Original illustrated stickers -->
+<svg xmlns="http://www.w3.org/2000/svg"
+     style="position:absolute;width:0;height:0;overflow:hidden"
+     aria-hidden="true">
 
-<main>
+  <symbol id="bunny" viewBox="0 0 120 120">
+    <ellipse cx="43" cy="29" rx="13" ry="29" fill="#fff" stroke="#d9b9bd" stroke-width="2"/>
+    <ellipse cx="77" cy="29" rx="13" ry="29" fill="#fff" stroke="#d9b9bd" stroke-width="2"/>
+    <ellipse cx="43" cy="29" rx="6" ry="19" fill="#f5c4d0"/>
+    <ellipse cx="77" cy="29" rx="6" ry="19" fill="#f5c4d0"/>
+    <circle cx="60" cy="70" r="39" fill="#fff" stroke="#d9b9bd" stroke-width="2"/>
+    <circle cx="46" cy="69" r="3" fill="#795b60"/>
+    <circle cx="74" cy="69" r="3" fill="#795b60"/>
+    <ellipse cx="60" cy="78" rx="5" ry="4" fill="#e9a5b7"/>
+    <path d="M54 84 Q60 91 66 84" fill="none" stroke="#a77a82" stroke-width="2" stroke-linecap="round"/>
+    <ellipse cx="39" cy="79" rx="8" ry="5" fill="#f5cbd3"/>
+    <ellipse cx="81" cy="79" rx="8" ry="5" fill="#f5cbd3"/>
+    <path d="M77 48 Q91 34 98 47 Q93 58 79 57" fill="#eaa8b9" stroke="#d58c9f" stroke-width="1.5"/>
+  </symbol>
 
-<section>
- <h2>♡ A letter for you ♡</h2>
- <p class="subtitle">A few words from me to you.</p>
- <div class="card">
-  <p id="mainMessage">WRITE YOUR OWN BIRTHDAY MESSAGE HERE ♡
+  <symbol id="cat" viewBox="0 0 120 120">
+    <path d="M27 48 L25 14 L51 34 Q60 29 69 34 L95 14 L93 48 Q103 60 99 79 Q94 108 60 108 Q26 108 21 79 Q17 60 27 48Z"
+          fill="#f3e9e5" stroke="#c8a9a2" stroke-width="2"/>
+    <path d="M33 40 L31 23 L46 37 M87 40 L89 23 L74 37" fill="#edb9c4"/>
+    <circle cx="45" cy="68" r="3.5" fill="#69545a"/>
+    <circle cx="75" cy="68" r="3.5" fill="#69545a"/>
+    <path d="M55 77 Q60 83 65 77" fill="none" stroke="#9d7580" stroke-width="2"/>
+    <path d="M60 73 L56 70 L64 70Z" fill="#d995a7"/>
+    <ellipse cx="39" cy="80" rx="8" ry="5" fill="#f2c8ce"/>
+    <ellipse cx="81" cy="80" rx="8" ry="5" fill="#f2c8ce"/>
+    <path d="M28 78 L8 74 M29 84 L9 88 M92 78 L112 74 M91 84 L111 88"
+          stroke="#b69a96" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
 
-Replace this with your own birthday message.
-You can make it as long, sweet, silly, or sentimental as you want.
+  <symbol id="cuddle" viewBox="0 0 180 140">
+    <!-- Sleeping bunny -->
+    <ellipse cx="62" cy="43" rx="10" ry="30" transform="rotate(-20 62 43)" fill="#fff" stroke="#d9b9bd" stroke-width="2"/>
+    <ellipse cx="88" cy="37" rx="10" ry="27" transform="rotate(18 88 37)" fill="#fff" stroke="#d9b9bd" stroke-width="2"/>
+    <ellipse cx="62" cy="43" rx="4" ry="18" transform="rotate(-20 62 43)" fill="#f3bdca"/>
+    <ellipse cx="88" cy="37" rx="4" ry="16" transform="rotate(18 88 37)" fill="#f3bdca"/>
+    <ellipse cx="75" cy="87" rx="48" ry="32" fill="#fff" stroke="#d9b9bd" stroke-width="2"/>
+    <path d="M49 81 Q55 87 61 81 M78 81 Q84 87 90 81" stroke="#96767d" fill="none" stroke-width="2.5" stroke-linecap="round"/>
+    <ellipse cx="71" cy="91" rx="5" ry="4" fill="#e9a5b7"/>
+    <ellipse cx="44" cy="94" rx="8" ry="5" fill="#f5cbd3"/>
+    <!-- Sleeping cat -->
+    <path d="M105 71 L107 40 L131 58 Q145 55 156 66 L170 47 L170 80 Q174 111 144 119 Q110 124 101 98Z"
+          fill="#f1e5df" stroke="#c8a9a2" stroke-width="2"/>
+    <path d="M120 85 Q127 91 134 85 M144 85 Q151 91 158 85" stroke="#96767d" fill="none" stroke-width="2.5" stroke-linecap="round"/>
+    <ellipse cx="139" cy="95" rx="5" ry="4" fill="#e9a5b7"/>
+    <ellipse cx="115" cy="97" rx="7" ry="5" fill="#f5cbd3"/>
+    <path d="M94 53 Q88 46 91 40 M104 42 Q99 32 104 26" stroke="#d99aae" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M30 39 Q25 30 32 24 M42 28 Q44 18 51 16" stroke="#d99aae" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M94 20 L98 12 L102 20 L110 24 L102 28 L98 36 L94 28 L86 24Z" fill="#f3c4d0"/>
+  </symbol>
 
-Happy birthday, Bunny! ♡</p>
- </div>
-</section>
+  <symbol id="flower" viewBox="0 0 100 100">
+    <g fill="#f5c8d2" stroke="#df9faf" stroke-width="1.5">
+      <ellipse cx="50" cy="23" rx="13" ry="19"/>
+      <ellipse cx="50" cy="77" rx="13" ry="19"/>
+      <ellipse cx="23" cy="50" rx="19" ry="13"/>
+      <ellipse cx="77" cy="50" rx="19" ry="13"/>
+      <ellipse cx="31" cy="31" rx="13" ry="18" transform="rotate(-45 31 31)"/>
+      <ellipse cx="69" cy="31" rx="13" ry="18" transform="rotate(45 69 31)"/>
+      <ellipse cx="31" cy="69" rx="13" ry="18" transform="rotate(45 31 69)"/>
+      <ellipse cx="69" cy="69" rx="13" ry="18" transform="rotate(-45 69 69)"/>
+    </g>
+    <circle cx="50" cy="50" r="12" fill="#f6df9b"/>
+  </symbol>
 
-<section>
- <h2>♡ Our little memories ♡</h2>
- <p class="subtitle">Little moments I want to keep forever.</p>
- <div class="gallery">
-  <div class="photo"><img src="bunny-photo-1.jpg" alt="Memory 1"><p>our little memory ♡</p></div>
-  <div class="photo"><img src="bunny-photo-2.jpg" alt="Memory 2"><p>one of my favorites</p></div>
-  <div class="photo"><img src="bunny-photo-3.jpg" alt="Memory 3"><p>my pretty girl</p></div>
-  <div class="photo"><img src="bunny-photo-4.jpg" alt="Memory 4"><p>another favorite</p></div>
-  <div class="photo"><img src="bunny-photo-5.jpg" alt="Memory 5"><p>a moment with you</p></div>
-  <div class="photo"><img src="bunny-photo-6.jpg" alt="Memory 6"><p>always worth remembering</p></div>
-  <div class="photo"><img src="bunny-photo-7.jpg" alt="Memory 7"><p>my favorite person</p></div>
-  <div class="photo"><img src="bunny-photo-8.jpg" alt="Memory 8"><p>to many more memories</p></div>
- </div>
-</section>
+  <symbol id="heart" viewBox="0 0 100 100">
+    <path d="M50 85 C38 72 10 52 10 32 C10 8 40 4 50 28 C60 4 90 8 90 32 C90 52 62 72 50 85Z"
+          fill="#eaaabd" stroke="#d48da1" stroke-width="2"/>
+  </symbol>
 
-<section>
- <h2>♡ Reasons why I love you ♡</h2>
- <p class="subtitle">Tap each little card.</p>
- <div class="card reason" onclick="reveal('r1')">
-  Your smile ♡
-  <div class="letter" id="r1">It makes ordinary days feel special.</div>
- </div>
- <div class="card reason" onclick="reveal('r2')">
-  Your personality ♡
-  <div class="letter" id="r2">I love all the little things that make you YOU.</div>
- </div>
- <div class="card reason" onclick="reveal('r3')">
-  The way you care ♡
-  <div class="letter" id="r3">You make me feel appreciated in ways you might not even notice.</div>
- </div>
- <div class="card reason" onclick="reveal('r4')">
-  Simply being you ♡
-  <div class="letter" id="r4">I wouldn't trade the person you are for anyone else.</div>
- </div>
-</section>
+  <symbol id="sparkle" viewBox="0 0 100 100">
+    <path d="M50 2 L60 39 L98 50 L60 61 L50 98 L40 61 L2 50 L40 39Z"
+          fill="#f4d4a4"/>
+  </symbol>
+</svg>
 
-<section>
- <h2>♡ A little secret ♡</h2>
- <div class="card">
-  <p>There's a letter waiting for you...</p>
-  <button onclick="reveal('secretLetter')">Open your letter 💌</button>
-  <div class="letter" id="secretLetter">
-   My Bunny,
+<!-- Navigation -->
+<nav>
+  <a href="#home">Home</a>
+  <a href="#countdown">Countdown</a>
+  <a href="#message">Birthday Letter</a>
+  <a href="#memories">Memories</a>
+  <a href="#reasons">Reasons</a>
+  <a href="#letters">Love Letters</a>
+  <a href="#music">Music</a>
+  <a href="#questions">Questions</a>
+</nav>
 
-   I hope you always know how special you are.
-   Thank you for being part of my life.
-   You deserve all the happiness in the world.
+<!-- Home -->
+<section class="hero" id="home">
+  <svg class="sticker large sticker-left"><use href="#bunny"/></svg>
+  <svg class="sticker large sticker-right"><use href="#cat"/></svg>
+  <svg class="sticker small" style="left:22%;top:70%"><use href="#flower"/></svg>
+  <svg class="sticker small" style="right:22%;top:15%"><use href="#heart"/></svg>
 
-   With lots of love, ♡
+  <div class="hero-content">
+    <div class="hero-decoration">♡ 𓂃 ࣪˖ ִֶָ 🌸 ♡</div>
+    <p class="date">DECEMBER 4, 2026</p>
+    <h1>Happy Birthday, Bunny</h1>
+    <p>A little corner of the internet made just for you.</p>
+    <a href="#message" class="soft-button" style="text-decoration:none">
+      Open your little surprise ♡
+    </a>
   </div>
- </div>
 </section>
 
-<section>
- <h2>♡ Something hidden ♡</h2>
- <div class="card">
-  <p>Can you find the little surprise?</p>
-  <button onclick="reveal('hidden')">Tap to reveal ✨</button>
-  <div class="letter" id="hidden">
-   Psst... you're my favorite notification. Don't let it get to your head. 🤭💕
+<!-- Countdown -->
+<section class="countdown-section" id="countdown">
+  <svg class="sticker sticker-top-right"><use href="#flower"/></svg>
+  <div class="container">
+    <p class="small-heading">The special day</p>
+    <h2>Counting Down to You</h2>
+    <p class="subtitle">Your day deserves all the love in the world.</p>
+
+    <div class="countdown" id="countdownTimer">
+      <div class="time-box"><strong id="days">00</strong><span>DAYS</span></div>
+      <div class="time-box"><strong id="hours">00</strong><span>HOURS</span></div>
+      <div class="time-box"><strong id="minutes">00</strong><span>MINUTES</span></div>
+      <div class="time-box"><strong id="seconds">00</strong><span>SECONDS</span></div>
+    </div>
+    <p id="countdownMessage" style="margin-top:20px;font-style:italic"></p>
   </div>
- </div>
 </section>
 
-<section>
- <h2>♡ A very important question ♡</h2>
- <div class="card">
-  <h3>Do you love me? 🐰</h3>
-  <button onclick="answer('YES')">YES, obviously! 💗</button>
-  <button onclick="answer('NO')">No 😈</button>
-  <p id="teaseAnswer"></p>
- </div>
+<!-- Birthday message -->
+<section class="message-section" id="message">
+  <svg class="sticker sticker-left"><use href="#cuddle"/></svg>
+  <svg class="sticker sticker-right"><use href="#flower"/></svg>
+
+  <div class="container">
+    <p class="small-heading">A little something for you</p>
+    <h2>To My Bunny ♡</h2>
+    <p class="subtitle">A message from me to you.</p>
+
+    <div class="message-card">
+      <!-- EDIT YOUR BIRTHDAY MESSAGE BELOW -->
+      <p>
+My dearest Bunny,
+
+Happy birthday! I hope today reminds you of how special you are and how much happiness you bring into the lives of the people around you.
+
+I'm so grateful to have you in my life. I hope this new chapter brings you beautiful memories, exciting opportunities, peaceful days and countless reasons to smile.
+
+You deserve all the lovely things this world has to offer.
+
+With lots of love,
+Your person ♡
+      </p>
+      <!-- END OF EDITABLE BIRTHDAY MESSAGE -->
+    </div>
+  </div>
 </section>
 
-<section>
- <h2>♡ More questions for Bunny ♡</h2>
- <div class="card">
-  <p>Am I your favorite person?</p>
-  <button onclick="reply('favorite','I KNEW IT. Good answer. 🤭')">YES</button>
-  <button onclick="reply('favorite','Excuse me??? Try again. 😭')">NO</button>
-  <p id="favorite"></p>
-  <hr style="border:0;border-top:1px solid #f2dfe3">
-  <p>Do I deserve extra kisses today?</p>
-  <button onclick="reply('kisses','Correct. I accept. 💋')">YES</button>
-  <button onclick="reply('kisses','Wrong answer. Please reconsider. 😤')">NO</button>
-  <p id="kisses"></p>
-  <hr style="border:0;border-top:1px solid #f2dfe3">
-  <p>Will you stay my Bunny?</p>
-  <button onclick="reply('bunny','That is the only acceptable answer. 🐰💕')">ALWAYS</button>
-  <button onclick="reply('bunny','I am filing a complaint. 😭')">NO</button>
-  <p id="bunny"></p>
- </div>
+<!-- Memories -->
+<section class="memories-section" id="memories">
+  <svg class="sticker sticker-top-right"><use href="#bunny"/></svg>
+  <svg class="sticker sticker-left"><use href="#cat"/></svg>
+
+  <div class="container">
+    <p class="small-heading">Little moments</p>
+    <h2>Our Memories</h2>
+    <p class="subtitle">A collection of moments worth keeping.</p>
+
+    <div class="gallery">
+      <div class="photo"><img src="bunny-photo-1.jpg" alt="Memory 1"></div>
+      <div class="photo"><img src="bunny-photo-2.jpg" alt="Memory 2"></div>
+      <div class="photo"><img src="bunny-photo-3.jpg" alt="Memory 3"></div>
+      <div class="photo"><img src="bunny-photo-4.jpg" alt="Memory 4"></div>
+      <div class="photo"><img src="bunny-photo-5.jpg" alt="Memory 5"></div>
+      <div class="photo"><img src="bunny-photo-6.jpg" alt="Memory 6"></div>
+      <div class="photo"><img src="bunny-photo-7.jpg" alt="Memory 7"></div>
+      <div class="photo"><img src="bunny-photo-8.jpg" alt="Memory 8"></div>
+    </div>
+  </div>
 </section>
 
-</main>
+<!-- Reasons -->
+<section class="reasons-section" id="reasons">
+  <svg class="sticker sticker-left"><use href="#flower"/></svg>
+  <svg class="sticker sticker-right"><use href="#cuddle"/></svg>
 
+  <div class="container">
+    <p class="small-heading">A hundred little things</p>
+    <h2>Reasons I Love You</h2>
+    <p class="subtitle">Just a few of the many things that make you special.</p>
+
+    <div class="reasons-grid">
+      <!-- EDIT THESE REASONS -->
+      <div class="reason-card">♡ The way you make ordinary days feel special.</div>
+      <div class="reason-card">♡ Your personality and all your little quirks.</div>
+      <div class="reason-card">♡ The way you make me smile without trying.</div>
+      <div class="reason-card">♡ Simply being you.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Secret letters -->
+<section class="letters-section" id="letters">
+  <svg class="sticker sticker-top-right"><use href="#cat"/></svg>
+  <svg class="sticker sticker-left"><use href="#bunny"/></svg>
+
+  <div class="container">
+    <p class="small-heading">Open when you're ready</p>
+    <h2>Little Love Letters</h2>
+    <p class="subtitle">Three little letters waiting just for you.</p>
+
+    <div class="letters-grid">
+
+      <div class="letter-card">
+        <div class="envelope">✉</div>
+        <h3>Open Me ♡</h3>
+        <button class="soft-button" onclick="toggleLetter(1)">Open letter</button>
+        <div class="letter-content" id="letter1">
+          <!-- EDIT LETTER ONE -->
+          A little reminder that you are appreciated, loved and special. I hope you never forget that. ♡
+        </div>
+      </div>
+
+      <div class="letter-card">
+        <div class="envelope">✉</div>
+        <h3>A Little Reminder</h3>
+        <button class="soft-button" onclick="toggleLetter(2)">Open letter</button>
+        <div class="letter-content" id="letter2">
+          <!-- EDIT LETTER TWO -->
+          Even on your ordinary days, you deserve to feel celebrated. You matter more than you know. ♡
+        </div>
+      </div>
+
+      <div class="letter-card">
+        <div class="envelope">✉</div>
+        <h3>Just Because</h3>
+        <button class="soft-button" onclick="toggleLetter(3)">Open letter</button>
+        <div class="letter-content" id="letter3">
+          <!-- EDIT LETTER THREE -->
+          If you ever need a little smile, remember that someone is always wishing you the loveliest things. ♡
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Hidden messages -->
+<section class="hidden-section" id="hidden">
+  <svg class="sticker sticker-left"><use href="#cuddle"/></svg>
+  <svg class="sticker sticker-right"><use href="#flower"/></svg>
+
+  <div class="container">
+    <p class="small-heading">Psst... a little secret</p>
+    <h2>Hidden Little Messages</h2>
+    <p class="subtitle">Tap the little surprises to reveal something.</p>
+
+    <div class="hidden-grid">
+      <button class="hidden-button" onclick="revealMessage(1)">A secret ♡</button>
+      <button class="hidden-button" onclick="revealMessage(2)">For you 🌸</button>
+      <button class="hidden-button" onclick="revealMessage(3)">One more!</button>
+      <button class="hidden-button" onclick="revealMessage(4)">A tiny surprise</button>
+    </div>
+
+    <div class="hidden-result" id="hiddenResult"></div>
+  </div>
+</section>
+
+<!-- Playful questions -->
+<section class="tease-section" id="questions">
+  <svg class="sticker sticker-top-right"><use href="#bunny"/></svg>
+  <svg class="sticker sticker-left"><use href="#cat"/></svg>
+
+  <div class="container">
+    <p class="small-heading">Be honest now</p>
+    <h2>Some Very Important Questions</h2>
+    <p class="subtitle">Choose wisely, Bunny. I'm watching. ♡</p>
+
+    <!-- QUESTION ONE -->
+    <div class="question-card">
+      <h3>Do you love me?</h3>
+      <div class="answer-buttons">
+        <button class="soft-button" onclick="answer(this,'yes','I knew it! You cannot escape my love. ♡')">YES</button>
+        <button class="soft-button" onclick="answer(this,'no','Excuse me?! I demand a recount. 😤')">NO</button>
+      </div>
+      <p class="answer-result"></p>
+    </div>
+
+    <!-- QUESTION TWO -->
+    <div class="question-card">
+      <h3>Am I your favorite person?</h3>
+      <div class="answer-buttons">
+        <button class="soft-button" onclick="answer(this,'yes','Correct answer. You get a gold star. ♡')">YES</button>
+        <button class="soft-button" onclick="answer(this,'no','Wrong answer. Please try again. 😭')">NO</button>
+      </div>
+      <p class="answer-result"></p>
+    </div>
+
+    <!-- QUESTION THREE -->
+    <div class="question-card">
+      <h3>Would you choose me again?</h3>
+      <div class="answer-buttons">
+        <button class="soft-button" onclick="answer(this,'yes','Good. I would choose you too. ♡')">YES</button>
+        <button class="soft-button" onclick="answer(this,'no','I'm pretending I did not see that. 😔')">NO</button>
+      </div>
+      <p class="answer-result"></p>
+    </div>
+
+    <!-- QUESTION FOUR -->
+    <div class="question-card">
+      <h3>Do I deserve extra kisses today?</h3>
+      <div class="answer-buttons">
+        <button class="soft-button" onclick="answer(this,'yes','As you should know. Lots of them! ♡')">YES</button>
+        <button class="soft-button" onclick="answer(this,'no','That answer has been rejected. 😤')">NO</button>
+      </div>
+      <p class="answer-result"></p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Spotify music -->
+<section class="music-section" id="music">
+  <svg class="sticker sticker-left"><use href="#bunny"/></svg>
+  <svg class="sticker sticker-right"><use href="#cat"/></svg>
+
+  <div class="container">
+    <p class="small-heading">A little playlist for you</p>
+    <h2>Songs That Remind Me of You</h2>
+    <p class="subtitle">Three songs, and a thousand little feelings.</p>
+
+    <div class="music-grid">
+
+      <div class="music-card">
+        <h3>♡ Song One</h3>
+        <!-- REPLACE YOUR_SPOTIFY_TRACK_ID_1 WITH A REAL SPOTIFY TRACK ID -->
+        <iframe
+          src="https://open.spotify.com/embed/track/YOUR_SPOTIFY_TRACK_ID_1?utm_source=generator"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy">
+        </iframe>
+      </div>
+
+      <div class="music-card">
+        <h3>♡ Song Two</h3>
+        <!-- REPLACE YOUR_SPOTIFY_TRACK_ID_2 WITH A REAL SPOTIFY TRACK ID -->
+        <iframe
+          src="https://open.spotify.com/embed/track/YOUR_SPOTIFY_TRACK_ID_2?utm_source=generator"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy">
+        </iframe>
+      </div>
+
+      <div class="music-card">
+        <h3>♡ Song Three</h3>
+        <!-- REPLACE YOUR_SPOTIFY_TRACK_ID_3 WITH A REAL SPOTIFY TRACK ID -->
+        <iframe
+          src="https://open.spotify.com/embed/track/YOUR_SPOTIFY_TRACK_ID_3?utm_source=generator"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy">
+        </iframe>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
 <footer>
- Made with lots of love, just for Bunny ♡
- <div style="font-size:27px;margin-top:13px">🐰 🌷 💗 ✨</div>
+  <svg class="sticker" style="position:relative;margin:auto;display:block">
+    <use href="#cuddle"/>
+  </svg>
+  <p>Made with love, just for Bunny.</p>
+  <p>♡ 𓂃 ࣪˖ ִֶָ 🌸 ♡</p>
+  <p style="font-size:.85rem">Happy Birthday, my favorite person.</p>
 </footer>
 
 <script>
-const birthday = new Date("2026-12-04T00:00:00");
 
-function updateCountdown(){
- const now=new Date();
- const diff=birthday-now;
- const el=document.getElementById("countdown");
- if(diff<=0){
-  el.textContent="It's your special day, Bunny! ♡";
-  return;
- }
- const days=Math.floor(diff/86400000);
- const hours=Math.floor(diff%86400000/3600000);
- const minutes=Math.floor(diff%3600000/60000);
- el.textContent=days+" days, "+hours+" hours and "+minutes+" minutes to go ♡";
+/* Sakura animation across the entire website */
+
+const sakura = document.getElementById("sakura");
+
+for (let i = 0; i < 25; i++) {
+  const petal = document.createElement("div");
+  petal.className = "petal";
+
+  petal.style.left = Math.random() * 100 + "%";
+  petal.style.animationDuration = (9 + Math.random() * 12) + "s";
+  petal.style.animationDelay = (-Math.random() * 20) + "s";
+  petal.style.setProperty(
+    "--drift",
+    (Math.random() * 180 - 90) + "px"
+  );
+  petal.style.opacity = (0.35 + Math.random() * 0.5);
+  petal.style.transform = "scale(" + (0.6 + Math.random() * 0.8) + ")";
+
+  sakura.appendChild(petal);
 }
+
+/* Birthday countdown */
+
+function updateCountdown() {
+  const birthday = new Date(2026, 11, 4, 0, 0, 0);
+  const now = new Date();
+  const difference = birthday - now;
+
+  if (difference <= 0) {
+    document.getElementById("days").textContent = "00";
+    document.getElementById("hours").textContent = "00";
+    document.getElementById("minutes").textContent = "00";
+    document.getElementById("seconds").textContent = "00";
+    document.getElementById("countdownMessage").textContent =
+      "It's your special day! Happy Birthday, Bunny! ♡";
+    return;
+  }
+
+  const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((difference / (1000 * 60)) % 60);
+  const seconds = Math.floor((difference / 1000) % 60);
+
+  document.getElementById("days").textContent = String(days).padStart(2, "0");
+  document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+  document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+  document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+
+  document.getElementById("countdownMessage").textContent =
+    "Every second brings us closer to your day. ♡";
+}
+
 updateCountdown();
-setInterval(updateCountdown,60000);
+setInterval(updateCountdown, 1000);
 
-function reveal(id){
- const el=document.getElementById(id);
- el.style.display=el.style.display==="block"?"none":"block";
+/* Open and close love letters */
+
+function toggleLetter(number) {
+  const letter = document.getElementById("letter" + number);
+  letter.classList.toggle("open");
 }
 
-function answer(choice){
- const el=document.getElementById("teaseAnswer");
- if(choice==="YES"){
-  el.textContent="GOOD. I knew you couldn't resist me. 🤭💗";
- }else{
-  el.textContent="Wrong answer. You have one more chance. 😈";
- }
+/* Hidden messages */
+
+const secretMessages = {
+  1: "You are one of my favorite parts of every day. ♡",
+  2: "I hope life is always gentle with you, Bunny. 🌸",
+  3: "If I could give you one thing, it would be the ability to see yourself the way the people who love you see you.",
+  4: "Surprise! You are very, very loved. 🐰"
+};
+
+function revealMessage(number) {
+  const result = document.getElementById("hiddenResult");
+  result.textContent = secretMessages[number];
+  result.style.display = "block";
 }
 
-function reply(id,message){
- document.getElementById(id).textContent=message;
+/* Teasing question responses */
+
+function answer(button, choice, message) {
+  const card = button.closest(".question-card");
+  const result = card.querySelector(".answer-result");
+  result.textContent = message;
 }
+
 </script>
 
 </body>
 </html>
-
-
