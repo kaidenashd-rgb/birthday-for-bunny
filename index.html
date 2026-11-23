@@ -4,108 +4,394 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Bunny ♡</title>
+<meta name="theme-color" content="#f8e8eb">
+<title>A Little Surprise for Bunny ♡</title>
 
 <style>
 :root {
-  --pink: #e8a9b9;
-  --dark-pink: #bd758d;
-  --light-pink: #fff0f3;
-  --cream: #fffaf5;
-  --text: #76515c;
-  --white: #ffffff;
+  --pink: #eab9c5;
+  --deep: #a96278;
+  --text: #76545c;
+  --cream: #fffaf7;
+  --border: #efd2d9;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+* { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--cream);
+  margin: 0;
   color: var(--text);
-  font-family: "Times New Roman", Times, serif;
+  font-family: Georgia, "Times New Roman", serif;
+  background-color: #f8e8eb;
+  background-image:
+    radial-gradient(ellipse at 20% 20%, rgba(255,255,255,.85) 0 2px, transparent 3px),
+    radial-gradient(ellipse at 80% 70%, rgba(255,255,255,.72) 0 2px, transparent 3px),
+    repeating-radial-gradient(circle at 0 0, transparent 0 10px, rgba(255,255,255,.36) 11px 12px, transparent 13px 22px),
+    repeating-linear-gradient(45deg, rgba(255,255,255,.16) 0 2px, transparent 2px 9px),
+    linear-gradient(135deg, #faeaed, #f3dce2 50%, #fff0f1);
+  background-size: 34px 34px, 42px 42px, 34px 34px, 18px 18px, cover;
+  background-attachment: fixed;
   overflow-x: hidden;
-  line-height: 1.6;
 }
 
-button {
-  font-family: inherit;
+button { font-family: inherit; cursor: pointer; }
+button:disabled { opacity: .55; cursor: default; }
+
+.page {
+  width: min(900px, 92%);
+  margin: 0 auto;
+  padding: 28px 0 60px;
 }
 
-section {
-  position: relative;
-  padding: 85px 20px;
-  overflow: hidden;
+.panel, .opening-card, .ending-card {
+  background: rgba(255,250,247,.93);
+  border: 1px solid rgba(255,255,255,.95);
+  border-radius: 24px;
+  box-shadow: 0 8px 30px rgba(159,103,119,.11);
+}
+
+.panel {
+  padding: clamp(22px, 5vw, 42px);
+  margin: 22px 0;
+}
+
+.center { text-align: center; }
+
+.eyebrow {
+  color: var(--deep);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-size: 11px;
+  text-align: center;
 }
 
 h1, h2, h3 {
+  color: var(--deep);
   font-weight: normal;
-  line-height: 1.25;
+}
+
+h1 {
+  font-size: clamp(36px, 8vw, 60px);
+  line-height: 1.15;
+  margin: 14px 0;
 }
 
 h2 {
-  font-size: clamp(2rem, 6vw, 2.8rem);
+  font-size: clamp(27px, 5vw, 36px);
   text-align: center;
-  margin-bottom: 12px;
-  color: #a9687e;
+  margin: 10px 0;
 }
 
-.subtitle {
-  text-align: center;
-  font-style: italic;
-  margin: 0 auto 38px;
-  color: #a9818b;
+h3 { font-size: 22px; }
+
+p { line-height: 1.8; }
+
+.subtitle, .section-intro {
+  color: #98777e;
+  line-height: 1.85;
 }
 
-.small-heading {
-  color: var(--dark-pink);
-  letter-spacing: 3px;
+.section-intro {
+  max-width: 580px;
+  text-align: center;
+  margin: 0 auto 24px;
+}
+
+.small-note {
+  color: #98777e;
+  font-size: 13px;
+}
+
+.button {
+  display: inline-block;
+  border: 1px solid #d99baa;
+  background: #eab9c4;
+  color: white;
+  border-radius: 30px;
+  padding: 13px 24px;
+  font-size: 15px;
+  margin: 6px;
+  transition: background .2s ease, transform .2s ease;
+  box-shadow: 0 4px 12px rgba(185,111,131,.15);
+}
+
+.button:hover {
+  background: #d994a5;
+  transform: translateY(-2px);
+}
+
+.button.secondary {
+  background: #fff8f7;
+  color: #ae7180;
+}
+
+.button.secondary:hover { background: #f9e8ec; }
+
+.decor-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 18px auto;
+}
+
+.sticker {
+  width: 78px;
+  height: 78px;
+  filter: drop-shadow(0 4px 4px rgba(169,104,123,.12));
+}
+
+.sticker.small { width: 54px; height: 54px; }
+.sticker.large { width: 108px; height: 108px; }
+
+.sticker-corner {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+/* Opening teaser */
+
+#opening {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px 14px;
+}
+
+.opening-card {
+  width: min(650px, 100%);
+  text-align: center;
+  padding: clamp(24px, 6vw, 52px);
+}
+
+.opening-card h1 { font-size: clamp(38px, 9vw, 60px); }
+
+.question-box {
+  background: #fff5f5;
+  border: 1px solid #f1d6dc;
+  border-radius: 20px;
+  padding: 22px 15px;
+  margin: 24px 0 12px;
+}
+
+#questionText {
+  color: var(--deep);
+  font-size: 21px;
+  line-height: 1.5;
+}
+
+#questionResponse {
+  min-height: 30px;
+  color: #ad7180;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* Main birthday page */
+
+#birthday { display: none; }
+
+.hero {
+  text-align: center;
+  padding: 45px 18px;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 24px 0 5px;
+}
+
+.time-unit {
+  background: #fff4f4;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 14px 16px;
+  min-width: 72px;
+}
+
+.time-unit strong {
+  display: block;
+  color: #ae6c7e;
+  font-size: 26px;
+  font-weight: normal;
+}
+
+.time-unit span {
+  font-size: 10px;
+  color: #98777e;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  font-size: 0.75rem;
-  text-align: center;
-  margin-bottom: 12px;
 }
 
-.container {
-  max-width: 1050px;
-  margin: auto;
+/* Photo gallery */
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+  margin-top: 24px;
+}
+
+.photo-frame {
+  aspect-ratio: 1 / 1;
+  background: #f8e8eb;
+  border: 7px solid white;
+  border-radius: 15px;
+  box-shadow: 0 4px 13px rgba(159,103,119,.12);
+  overflow: hidden;
+  position: relative;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
   position: relative;
   z-index: 2;
 }
 
-button, a {
-  -webkit-tap-highlight-color: transparent;
+.photo-placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 12px;
+  color: #b47a88;
+  font-size: 13px;
+  line-height: 1.6;
+  background: #f9e9ed;
 }
 
-button {
+/* Reasons */
+
+.reason-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.reason {
+  background: #fff5f5;
+  border: 1px solid #f1dce0;
+  border-radius: 15px;
+  padding: 17px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* Letters */
+
+.letter {
+  background: #fff7f5;
+  border: 1px solid #f0d8dd;
+  border-radius: 15px;
+  margin: 13px 0;
+  overflow: hidden;
+}
+
+.letter summary {
+  list-style: none;
+  padding: 18px;
+  color: #a96278;
   cursor: pointer;
+  text-align: center;
 }
 
-.soft-button {
-  display: inline-block;
-  border: 1px solid #e6b2c0;
-  background: #fff7f8;
-  color: #a9687e;
-  padding: 12px 25px;
-  border-radius: 30px;
-  font-size: 1rem;
-  transition: .25s;
+.letter summary::-webkit-details-marker { display: none; }
+.letter summary::after { content: "  ♡"; }
+
+.letter-content {
+  padding: 0 22px 22px;
+  line-height: 1.9;
+  white-space: pre-line;
+  color: #82636b;
 }
 
-.soft-button:hover {
-  background: #f5dce3;
-  transform: translateY(-2px);
+/* Hidden messages */
+
+.hidden-message {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 1px dashed #dfaeba;
+  border-radius: 13px;
+  background: #fff7f7;
+  color: #a96278;
+  padding: 15px;
+  margin: 10px 0;
+  font-size: 15px;
 }
 
-/* Sakura petals */
+.hidden-message span {
+  display: none;
+  color: #80616a;
+  margin-top: 10px;
+  line-height: 1.7;
+}
 
-#sakura {
+.hidden-message.open span { display: block; }
+
+/* Spotify song embeds */
+
+.song-card {
+  background: #fff6f5;
+  border: 1px solid #efd7dc;
+  border-radius: 16px;
+  padding: 17px;
+  margin: 13px 0;
+  text-align: center;
+}
+
+.song-card p { margin: 5px 0; }
+
+.song-card iframe {
+  width: 100%;
+  height: 152px;
+  border: 0;
+  border-radius: 12px;
+  margin-top: 12px;
+}
+
+.song-placeholder {
+  color: #a77b84;
+  font-size: 13px;
+  padding: 12px;
+  background: #f9e9ed;
+  border-radius: 10px;
+  margin-top: 12px;
+}
+
+/* Ending page */
+
+#ending {
+  min-height: 100vh;
+  display: none;
+  place-items: center;
+  padding: 24px 14px;
+}
+
+.ending-card {
+  width: min(650px, 100%);
+  text-align: center;
+  padding: clamp(26px, 6vw, 52px);
+}
+
+.ending-card h1 { font-size: clamp(39px, 9vw, 64px); }
+
+/* Falling petals */
+
+#petals {
   position: fixed;
   inset: 0;
   pointer-events: none;
@@ -115,933 +401,699 @@ button {
 
 .petal {
   position: absolute;
-  top: -35px;
-  width: 12px;
-  height: 17px;
-  background: linear-gradient(135deg, #ffe5eb, #e9a6b8);
-  border-radius: 100% 0 100% 0;
-  opacity: .75;
-  animation: falling linear infinite;
+  top: -30px;
+  width: 11px;
+  height: 15px;
+  background: rgba(235,164,181,.55);
+  border-radius: 80% 10% 80% 10%;
+  animation: fall linear infinite;
 }
 
-@keyframes falling {
-  0% {
-    transform: translate3d(0, -40px, 0) rotate(0deg);
-  }
-  50% {
-    transform: translate3d(var(--drift), 50vh, 0) rotate(180deg);
-  }
-  100% {
-    transform: translate3d(0, 110vh, 0) rotate(360deg);
-  }
+@keyframes fall {
+  from { transform: translate3d(0,-30px,0) rotate(0deg); }
+  to { transform: translate3d(65px,110vh,0) rotate(480deg); }
 }
 
-/* Sticker decorations */
+/* Background music player */
 
-.sticker {
-  position: absolute;
-  width: 90px;
-  height: 90px;
-  pointer-events: none;
-  z-index: 1;
-  opacity: .95;
-  filter: drop-shadow(0 3px 3px #d9aab544);
-}
-
-.sticker.small {
-  width: 65px;
-  height: 65px;
-}
-
-.sticker.large {
-  width: 120px;
-  height: 120px;
-}
-
-.sticker-left {
-  left: 2%;
-  top: 30px;
-}
-
-.sticker-right {
-  right: 2%;
-  bottom: 25px;
-}
-
-.sticker-top-right {
-  right: 4%;
-  top: 25px;
-}
-
-/* Navigation */
-
-nav {
-  position: relative;
-  z-index: 5;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 18px;
-  padding: 17px 12px;
-  background: #fff9f7;
-  border-bottom: 1px solid #f4e2e5;
-}
-
-nav a {
-  color: #a9687e;
-  text-decoration: none;
-  font-size: .95rem;
-}
-
-nav a:hover {
-  color: #d28ba1;
-}
-
-/* Hero */
-
-.hero {
-  min-height: 90vh;
-  background: linear-gradient(145deg, #fff1f4, #fffaf5);
-  display: flex;
-  justify-content: center;
+#musicPlayer {
+  display: none;
+  position: fixed;
+  z-index: 30;
+  bottom: 16px;
+  right: 14px;
+  background: rgba(255,248,247,.97);
+  border: 1px solid #e9c4cd;
+  border-radius: 30px;
+  padding: 8px 13px;
+  box-shadow: 0 4px 15px rgba(159,103,119,.18);
+  color: #a96278;
   align-items: center;
-  text-align: center;
-  padding: 90px 20px;
+  gap: 9px;
+  font-size: 13px;
 }
 
-.hero-content {
-  max-width: 720px;
-  position: relative;
-  z-index: 2;
+#musicToggle {
+  border: 0;
+  background: #eab9c4;
+  color: white;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 14px;
 }
-
-.hero h1 {
-  font-size: clamp(3rem, 10vw, 5.8rem);
-  color: #b8758b;
-  margin: 12px 0;
-}
-
-.hero p {
-  font-size: 1.15rem;
-  font-style: italic;
-  margin-bottom: 22px;
-}
-
-.hero .date {
-  letter-spacing: 4px;
-  font-size: .85rem;
-  color: #bd8796;
-}
-
-.hero-decoration {
-  font-size: 1rem;
-  color: #c98c9e;
-  letter-spacing: 5px;
-  margin-bottom: 10px;
-}
-
-/* Countdown */
-
-.countdown-section {
-  background: #fffaf7;
-  text-align: center;
-}
-
-.countdown {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-top: 30px;
-}
-
-.time-box {
-  background: #fff0f3;
-  border: 1px solid #f0d4dc;
-  border-radius: 18px;
-  min-width: 90px;
-  padding: 18px 14px;
-}
-
-.time-box strong {
-  display: block;
-  font-size: 2rem;
-  color: #b8758b;
-  font-weight: normal;
-}
-
-.time-box span {
-  font-size: .8rem;
-  letter-spacing: 1px;
-  color: #a9818b;
-}
-
-/* Birthday message */
-
-.message-section {
-  background: #fdf0f2;
-  text-align: center;
-}
-
-.message-card {
-  max-width: 760px;
-  margin: auto;
-  background: #fffaf8;
-  padding: clamp(25px, 6vw, 55px);
-  border-radius: 25px;
-  border: 1px solid #f0dce1;
-  box-shadow: 0 10px 30px #d9aab522;
-}
-
-.message-card p {
-  font-size: 1.1rem;
-  line-height: 2;
-  white-space: pre-line;
-}
-
-/* Memories */
-
-.memories-section {
-  background: #fffaf5;
-}
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-}
-
-.photo {
-  background: white;
-  border: 7px solid white;
-  border-radius: 12px;
-  box-shadow: 0 5px 18px #bd879622;
-  overflow: hidden;
-  aspect-ratio: 1 / 1;
-}
-
-.photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform .4s;
-}
-
-.photo:hover img {
-  transform: scale(1.05);
-}
-
-/* Reasons */
-
-.reasons-section {
-  background: #fff0f3;
-}
-
-.reasons-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 17px;
-  max-width: 850px;
-  margin: auto;
-}
-
-.reason-card {
-  padding: 24px;
-  text-align: center;
-  background: #fffaf8;
-  border: 1px solid #f0dce1;
-  border-radius: 18px;
-  font-size: 1.1rem;
-  box-shadow: 0 5px 15px #d9aab522;
-}
-
-/* Letters */
-
-.letters-section {
-  background: #fffaf5;
-}
-
-.letters-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-
-.letter-card {
-  text-align: center;
-  padding: 25px 16px;
-  border: 1px solid #efd7de;
-  background: #fff3f5;
-  border-radius: 20px;
-}
-
-.envelope {
-  font-size: 2.8rem;
-  margin-bottom: 12px;
-}
-
-.letter-card h3 {
-  color: #ae7185;
-  margin-bottom: 15px;
-}
-
-.letter-content {
-  display: none;
-  background: white;
-  border-radius: 12px;
-  padding: 16px;
-  margin-top: 15px;
-  white-space: pre-line;
-  line-height: 1.7;
-}
-
-.letter-content.open {
-  display: block;
-}
-
-/* Hidden messages */
-
-.hidden-section {
-  background: #fdf0f2;
-  text-align: center;
-}
-
-.hidden-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 14px;
-}
-
-.hidden-button {
-  background: #fffaf8;
-  border: 1px solid #eccbd5;
-  color: #a9687e;
-  border-radius: 25px;
-  padding: 15px 23px;
-  font-size: 1rem;
-}
-
-.hidden-button:hover {
-  background: #f7dfe6;
-}
-
-.hidden-result {
-  display: none;
-  background: #fffaf8;
-  border-radius: 15px;
-  padding: 20px;
-  margin: 18px auto 0;
-  max-width: 500px;
-  border: 1px solid #efd7de;
-  white-space: pre-line;
-}
-
-/* Teasing questions */
-
-.tease-section {
-  background: #fffaf5;
-  text-align: center;
-}
-
-.question-card {
-  background: #fff0f3;
-  border: 1px solid #efd4dc;
-  border-radius: 20px;
-  padding: 25px;
-  max-width: 600px;
-  margin: 18px auto;
-}
-
-.question-card h3 {
-  color: #a9687e;
-  font-size: 1.35rem;
-  margin-bottom: 17px;
-}
-
-.answer-buttons {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.answer-buttons button {
-  min-width: 90px;
-}
-
-.answer-result {
-  margin-top: 15px;
-  min-height: 25px;
-  color: #a9687e;
-  font-style: italic;
-}
-
-/* Music */
-
-.music-section {
-  background: #fdf0f2;
-}
-
-.music-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.music-card {
-  background: #fffaf8;
-  padding: 18px;
-  border: 1px solid #efd7de;
-  border-radius: 18px;
-  text-align: center;
-}
-
-.music-card h3 {
-  margin-bottom: 12px;
-  color: #a9687e;
-}
-
-.music-card iframe {
-  width: 100%;
-  height: 152px;
-  border: none;
-  border-radius: 12px;
-}
-
-/* Footer */
 
 footer {
-  background: #f5dfe5;
   text-align: center;
-  padding: 45px 20px;
-  color: #9c6a7b;
+  color: #a77b84;
+  font-size: 13px;
+  padding: 20px;
 }
 
-footer p {
-  margin: 7px;
-}
-
-@media (max-width: 750px) {
-  .gallery {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .letters-grid,
-  .music-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .reasons-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .sticker {
-    width: 65px;
-    height: 65px;
-  }
-
-  .sticker.large {
-    width: 85px;
-    height: 85px;
-  }
-
-  nav {
-    gap: 12px;
-  }
-
-  nav a {
-    font-size: .85rem;
-  }
+@media (max-width: 600px) {
+  .page { width: 94%; padding-top: 14px; }
+  .panel { padding: 22px 16px; margin: 15px 0; }
+  .photo-grid { gap: 9px; }
+  .reason-list { grid-template-columns: 1fr; }
+  .sticker { width: 65px; height: 65px; }
+  .sticker.large { width: 90px; height: 90px; }
+  .time-unit { min-width: 65px; padding: 12px; }
+  .time-unit strong { font-size: 23px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  .petal {
-    animation: none;
-    display: none;
-  }
-
-  * {
-    transition: none !important;
-  }
+  html { scroll-behavior: auto; }
+  .petal { animation: none; display: none; }
+  .button { transition: none; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- Sakura petals -->
-<div id="sakura" aria-hidden="true"></div>
-
-<!-- Original illustrated stickers -->
+<!-- Illustrated sticker collection -->
 <svg xmlns="http://www.w3.org/2000/svg"
      style="position:absolute;width:0;height:0;overflow:hidden"
      aria-hidden="true">
+<defs>
 
-  <symbol id="bunny" viewBox="0 0 120 120">
-    <ellipse cx="43" cy="29" rx="13" ry="29" fill="#fff" stroke="#d9b9bd" stroke-width="2"/>
-    <ellipse cx="77" cy="29" rx="13" ry="29" fill="#fff" stroke="#d9b9bd" stroke-width="2"/>
-    <ellipse cx="43" cy="29" rx="6" ry="19" fill="#f5c4d0"/>
-    <ellipse cx="77" cy="29" rx="6" ry="19" fill="#f5c4d0"/>
-    <circle cx="60" cy="70" r="39" fill="#fff" stroke="#d9b9bd" stroke-width="2"/>
-    <circle cx="46" cy="69" r="3" fill="#795b60"/>
-    <circle cx="74" cy="69" r="3" fill="#795b60"/>
-    <ellipse cx="60" cy="78" rx="5" ry="4" fill="#e9a5b7"/>
-    <path d="M54 84 Q60 91 66 84" fill="none" stroke="#a77a82" stroke-width="2" stroke-linecap="round"/>
-    <ellipse cx="39" cy="79" rx="8" ry="5" fill="#f5cbd3"/>
-    <ellipse cx="81" cy="79" rx="8" ry="5" fill="#f5cbd3"/>
-    <path d="M77 48 Q91 34 98 47 Q93 58 79 57" fill="#eaa8b9" stroke="#d58c9f" stroke-width="1.5"/>
-  </symbol>
+<symbol id="bunny" viewBox="0 0 120 120">
+  <ellipse cx="43" cy="31" rx="13" ry="29" fill="#fffaf7" stroke="#d9b7bb" stroke-width="2" transform="rotate(-13 43 31)"/>
+  <ellipse cx="76" cy="29" rx="13" ry="30" fill="#fffaf7" stroke="#d9b7bb" stroke-width="2" transform="rotate(12 76 29)"/>
+  <ellipse cx="43" cy="31" rx="6" ry="20" fill="#f3c7d0" transform="rotate(-13 43 31)"/>
+  <ellipse cx="76" cy="29" rx="6" ry="21" fill="#f3c7d0" transform="rotate(12 76 29)"/>
+  <circle cx="60" cy="72" r="37" fill="#fffaf7" stroke="#d9b7bb" stroke-width="2"/>
+  <circle cx="47" cy="69" r="3" fill="#77545c"/>
+  <circle cx="73" cy="69" r="3" fill="#77545c"/>
+  <ellipse cx="60" cy="79" rx="4" ry="3" fill="#d88e9f"/>
+  <path d="M56 84 Q60 89 64 84" fill="none" stroke="#9b6873" stroke-width="1.8" stroke-linecap="round"/>
+  <ellipse cx="37" cy="79" rx="7" ry="4" fill="#f5c4cd"/>
+  <ellipse cx="83" cy="79" rx="7" ry="4" fill="#f5c4cd"/>
+  <path d="M79 49 Q91 38 97 49 Q91 60 79 49Z" fill="#e9a6b5" stroke="#d38b9d" stroke-width="1.5"/>
+  <circle cx="88" cy="49" r="3" fill="#fff5f5"/>
+</symbol>
 
-  <symbol id="cat" viewBox="0 0 120 120">
-    <path d="M27 48 L25 14 L51 34 Q60 29 69 34 L95 14 L93 48 Q103 60 99 79 Q94 108 60 108 Q26 108 21 79 Q17 60 27 48Z"
-          fill="#f3e9e5" stroke="#c8a9a2" stroke-width="2"/>
-    <path d="M33 40 L31 23 L46 37 M87 40 L89 23 L74 37" fill="#edb9c4"/>
-    <circle cx="45" cy="68" r="3.5" fill="#69545a"/>
-    <circle cx="75" cy="68" r="3.5" fill="#69545a"/>
-    <path d="M55 77 Q60 83 65 77" fill="none" stroke="#9d7580" stroke-width="2"/>
-    <path d="M60 73 L56 70 L64 70Z" fill="#d995a7"/>
-    <ellipse cx="39" cy="80" rx="8" ry="5" fill="#f2c8ce"/>
-    <ellipse cx="81" cy="80" rx="8" ry="5" fill="#f2c8ce"/>
-    <path d="M28 78 L8 74 M29 84 L9 88 M92 78 L112 74 M91 84 L111 88"
-          stroke="#b69a96" stroke-width="1.5" stroke-linecap="round"/>
-  </symbol>
+<symbol id="kitten" viewBox="0 0 120 120">
+  <path d="M26 50 L25 19 Q27 12 34 19 L52 37 Q60 34 68 37 L87 19 Q94 13 96 21 L94 53" fill="#f4e5dc" stroke="#c9aaa0" stroke-width="2"/>
+  <path d="M33 27 L34 47 L48 39Z M87 27 L85 47 L72 39Z" fill="#edb8c1"/>
+  <circle cx="60" cy="70" r="39" fill="#f4e5dc" stroke="#c9aaa0" stroke-width="2"/>
+  <path d="M43 66 Q49 59 54 66 M67 66 Q73 59 78 66" fill="none" stroke="#70545a" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M57 76 Q60 80 63 76" fill="#d88e9f"/>
+  <path d="M60 80 Q55 87 50 82 M60 80 Q65 87 70 82" fill="none" stroke="#9c7076" stroke-width="1.6"/>
+  <ellipse cx="36" cy="78" rx="7" ry="4" fill="#edb7c0"/>
+  <ellipse cx="84" cy="78" rx="7" ry="4" fill="#edb7c0"/>
+  <path d="M30 76 L12 72 M30 82 L12 84 M90 76 L108 72 M90 82 L108 84" stroke="#b99a92" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M78 39 Q88 30 96 39 Q88 48 78 39Z" fill="#e6a0b0"/>
+  <circle cx="87" cy="39" r="3" fill="#fff"/>
+</symbol>
 
-  <symbol id="cuddle" viewBox="0 0 180 140">
-    <!-- Sleeping bunny -->
-    <ellipse cx="62" cy="43" rx="10" ry="30" transform="rotate(-20 62 43)" fill="#fff" stroke="#d9b9bd" stroke-width="2"/>
-    <ellipse cx="88" cy="37" rx="10" ry="27" transform="rotate(18 88 37)" fill="#fff" stroke="#d9b9bd" stroke-width="2"/>
-    <ellipse cx="62" cy="43" rx="4" ry="18" transform="rotate(-20 62 43)" fill="#f3bdca"/>
-    <ellipse cx="88" cy="37" rx="4" ry="16" transform="rotate(18 88 37)" fill="#f3bdca"/>
-    <ellipse cx="75" cy="87" rx="48" ry="32" fill="#fff" stroke="#d9b9bd" stroke-width="2"/>
-    <path d="M49 81 Q55 87 61 81 M78 81 Q84 87 90 81" stroke="#96767d" fill="none" stroke-width="2.5" stroke-linecap="round"/>
-    <ellipse cx="71" cy="91" rx="5" ry="4" fill="#e9a5b7"/>
-    <ellipse cx="44" cy="94" rx="8" ry="5" fill="#f5cbd3"/>
-    <!-- Sleeping cat -->
-    <path d="M105 71 L107 40 L131 58 Q145 55 156 66 L170 47 L170 80 Q174 111 144 119 Q110 124 101 98Z"
-          fill="#f1e5df" stroke="#c8a9a2" stroke-width="2"/>
-    <path d="M120 85 Q127 91 134 85 M144 85 Q151 91 158 85" stroke="#96767d" fill="none" stroke-width="2.5" stroke-linecap="round"/>
-    <ellipse cx="139" cy="95" rx="5" ry="4" fill="#e9a5b7"/>
-    <ellipse cx="115" cy="97" rx="7" ry="5" fill="#f5cbd3"/>
-    <path d="M94 53 Q88 46 91 40 M104 42 Q99 32 104 26" stroke="#d99aae" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <path d="M30 39 Q25 30 32 24 M42 28 Q44 18 51 16" stroke="#d99aae" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <path d="M94 20 L98 12 L102 20 L110 24 L102 28 L98 36 L94 28 L86 24Z" fill="#f3c4d0"/>
-  </symbol>
+<symbol id="cuddle" viewBox="0 0 150 120">
+  <ellipse cx="73" cy="91" rx="58" ry="18" fill="#f1d9dc"/>
+  <ellipse cx="56" cy="70" rx="35" ry="31" fill="#fffaf7" stroke="#d9b7bb" stroke-width="2"/>
+  <ellipse cx="43" cy="38" rx="9" ry="23" fill="#fffaf7" stroke="#d9b7bb" stroke-width="2" transform="rotate(-12 43 38)"/>
+  <ellipse cx="69" cy="37" rx="9" ry="23" fill="#fffaf7" stroke="#d9b7bb" stroke-width="2" transform="rotate(12 69 37)"/>
+  <circle cx="48" cy="69" r="2.5" fill="#77545c"/>
+  <circle cx="65" cy="69" r="2.5" fill="#77545c"/>
+  <path d="M54 76 Q57 80 60 76" fill="none" stroke="#a66e7c" stroke-width="1.5"/>
+  <ellipse cx="99" cy="75" rx="31" ry="27" fill="#f4e5dc" stroke="#c9aaa0" stroke-width="2"/>
+  <path d="M76 57 L75 35 Q77 29 83 35 L96 48 M108 48 L121 35 Q127 31 128 38 L125 60" fill="#f4e5dc" stroke="#c9aaa0" stroke-width="2"/>
+  <path d="M82 40 L84 52 L94 49Z M117 41 L115 52 L105 49Z" fill="#edb8c1"/>
+  <path d="M91 72 Q96 66 101 72 M108 72 Q113 66 117 72" fill="none" stroke="#70545a" stroke-width="2" stroke-linecap="round"/>
+  <path d="M102 78 Q105 81 108 78" fill="none" stroke="#a66e7c" stroke-width="1.5"/>
+  <path d="M83 91 Q76 80 69 85" fill="none" stroke="#fffaf7" stroke-width="8" stroke-linecap="round"/>
+  <path d="M22 24 Q29 12 36 24 Q29 33 22 24Z" fill="#e7a7b5"/>
+</symbol>
 
-  <symbol id="flower" viewBox="0 0 100 100">
-    <g fill="#f5c8d2" stroke="#df9faf" stroke-width="1.5">
-      <ellipse cx="50" cy="23" rx="13" ry="19"/>
-      <ellipse cx="50" cy="77" rx="13" ry="19"/>
-      <ellipse cx="23" cy="50" rx="19" ry="13"/>
-      <ellipse cx="77" cy="50" rx="19" ry="13"/>
-      <ellipse cx="31" cy="31" rx="13" ry="18" transform="rotate(-45 31 31)"/>
-      <ellipse cx="69" cy="31" rx="13" ry="18" transform="rotate(45 69 31)"/>
-      <ellipse cx="31" cy="69" rx="13" ry="18" transform="rotate(45 31 69)"/>
-      <ellipse cx="69" cy="69" rx="13" ry="18" transform="rotate(-45 69 69)"/>
-    </g>
-    <circle cx="50" cy="50" r="12" fill="#f6df9b"/>
-  </symbol>
+<symbol id="flower" viewBox="0 0 100 100">
+  <g fill="#f5cbd3" stroke="#dfa8b4" stroke-width="1.5">
+    <ellipse cx="50" cy="25" rx="13" ry="20"/>
+    <ellipse cx="50" cy="75" rx="13" ry="20"/>
+    <ellipse cx="25" cy="50" rx="20" ry="13"/>
+    <ellipse cx="75" cy="50" rx="20" ry="13"/>
+    <ellipse cx="32" cy="32" rx="13" ry="19" transform="rotate(-45 32 32)"/>
+    <ellipse cx="68" cy="32" rx="13" ry="19" transform="rotate(45 68 32)"/>
+    <ellipse cx="32" cy="68" rx="13" ry="19" transform="rotate(45 32 68)"/>
+    <ellipse cx="68" cy="68" rx="13" ry="19" transform="rotate(-45 68 68)"/>
+  </g>
+  <circle cx="50" cy="50" r="13" fill="#e7b66f"/>
+  <circle cx="45" cy="46" r="3" fill="#fff0c7"/>
+</symbol>
 
-  <symbol id="heart" viewBox="0 0 100 100">
-    <path d="M50 85 C38 72 10 52 10 32 C10 8 40 4 50 28 C60 4 90 8 90 32 C90 52 62 72 50 85Z"
-          fill="#eaaabd" stroke="#d48da1" stroke-width="2"/>
-  </symbol>
+<symbol id="bow" viewBox="0 0 100 70">
+  <path d="M47 34 Q15 -2 8 17 Q3 39 44 39Z" fill="#eaaebd" stroke="#cf899b" stroke-width="2"/>
+  <path d="M53 34 Q85 -2 92 17 Q97 39 56 39Z" fill="#eaaebd" stroke="#cf899b" stroke-width="2"/>
+  <path d="M44 38 L25 65 L47 52 L55 52 L77 65 L56 38Z" fill="#eaaebd" stroke="#cf899b" stroke-width="2"/>
+  <ellipse cx="50" cy="35" rx="9" ry="11" fill="#d9899e"/>
+  <circle cx="47" cy="32" r="3" fill="#fbe9ed"/>
+</symbol>
 
-  <symbol id="sparkle" viewBox="0 0 100 100">
-    <path d="M50 2 L60 39 L98 50 L60 61 L50 98 L40 61 L2 50 L40 39Z"
-          fill="#f4d4a4"/>
-  </symbol>
+</defs>
 </svg>
 
-<!-- Navigation -->
-<nav>
-  <a href="#home">Home</a>
-  <a href="#countdown">Countdown</a>
-  <a href="#message">Birthday Letter</a>
-  <a href="#memories">Memories</a>
-  <a href="#reasons">Reasons</a>
-  <a href="#letters">Love Letters</a>
-  <a href="#music">Music</a>
-  <a href="#questions">Questions</a>
-</nav>
+<div id="petals" aria-hidden="true"></div>
 
-<!-- Home -->
-<section class="hero" id="home">
-  <svg class="sticker large sticker-left"><use href="#bunny"/></svg>
-  <svg class="sticker large sticker-right"><use href="#cat"/></svg>
-  <svg class="sticker small" style="left:22%;top:70%"><use href="#flower"/></svg>
-  <svg class="sticker small" style="right:22%;top:15%"><use href="#heart"/></svg>
+<!-- OPENING TEASER -->
+<section id="opening">
+  <div class="opening-card">
+    <div class="eyebrow">a tiny little something ♡</div>
 
-  <div class="hero-content">
-    <div class="hero-decoration">♡ 𓂃 ࣪˖ ִֶָ 🌸 ♡</div>
-    <p class="date">DECEMBER 4, 2026</p>
-    <h1>Happy Birthday, Bunny</h1>
-    <p>A little corner of the internet made just for you.</p>
-    <a href="#message" class="soft-button" style="text-decoration:none">
-      Open your little surprise ♡
-    </a>
-  </div>
-</section>
-
-<!-- Countdown -->
-<section class="countdown-section" id="countdown">
-  <svg class="sticker sticker-top-right"><use href="#flower"/></svg>
-  <div class="container">
-    <p class="small-heading">The special day</p>
-    <h2>Counting Down to You</h2>
-    <p class="subtitle">Your day deserves all the love in the world.</p>
-
-    <div class="countdown" id="countdownTimer">
-      <div class="time-box"><strong id="days">00</strong><span>DAYS</span></div>
-      <div class="time-box"><strong id="hours">00</strong><span>HOURS</span></div>
-      <div class="time-box"><strong id="minutes">00</strong><span>MINUTES</span></div>
-      <div class="time-box"><strong id="seconds">00</strong><span>SECONDS</span></div>
+    <div class="decor-row">
+      <svg class="sticker"><use href="#bunny"/></svg>
+      <svg class="sticker large"><use href="#cuddle"/></svg>
+      <svg class="sticker"><use href="#kitten"/></svg>
     </div>
-    <p id="countdownMessage" style="margin-top:20px;font-style:italic"></p>
+
+    <h1>Hi, Bunny ♡</h1>
+    <p class="subtitle">
+      Psst… someone has prepared something special for you.
+      But before you see it, I have a few very important questions.
+    </p>
+
+    <div class="question-box">
+      <div class="eyebrow" id="questionNumber">QUESTION 1</div>
+      <p id="questionText">Are you ready for a little surprise?</p>
+      <div id="answerButtons">
+        <button class="button" id="yesButton" type="button">Yes ♡</button>
+        <button class="button secondary" id="noButton" type="button">No hehe</button>
+      </div>
+      <p id="questionResponse" aria-live="polite"></p>
+      <button class="button hidden" id="revealButton" type="button">
+        Okay, show me! ♡
+      </button>
+    </div>
+
+    <p class="small-note">Take your time. There's no escaping the cuteness. ♡</p>
+    <svg class="sticker small"><use href="#flower"/></svg>
   </div>
 </section>
 
-<!-- Birthday message -->
-<section class="message-section" id="message">
-  <svg class="sticker sticker-left"><use href="#cuddle"/></svg>
-  <svg class="sticker sticker-right"><use href="#flower"/></svg>
+<!-- MAIN BIRTHDAY WEBSITE -->
+<main id="birthday">
+  <div class="page">
 
-  <div class="container">
-    <p class="small-heading">A little something for you</p>
-    <h2>To My Bunny ♡</h2>
-    <p class="subtitle">A message from me to you.</p>
+    <section class="panel hero">
+      <div class="eyebrow">a little birthday corner made with love</div>
+      <div class="decor-row">
+        <svg class="sticker"><use href="#bow"/></svg>
+        <svg class="sticker large"><use href="#cuddle"/></svg>
+        <svg class="sticker"><use href="#flower"/></svg>
+      </div>
 
-    <div class="message-card">
-      <!-- EDIT YOUR BIRTHDAY MESSAGE BELOW -->
-      <p>
-My dearest Bunny,
-
-Happy birthday! I hope today reminds you of how special you are and how much happiness you bring into the lives of the people around you.
-
-I'm so grateful to have you in my life. I hope this new chapter brings you beautiful memories, exciting opportunities, peaceful days and countless reasons to smile.
-
-You deserve all the lovely things this world has to offer.
-
-With lots of love,
-Your person ♡
+      <h1>Happy Birthday, Bunny! ♡</h1>
+      <p class="subtitle">
+        Today is all about you. I hope this little corner of the internet
+        reminds you how loved and special you are.
       </p>
-      <!-- END OF EDITABLE BIRTHDAY MESSAGE -->
-    </div>
-  </div>
-</section>
 
-<!-- Memories -->
-<section class="memories-section" id="memories">
-  <svg class="sticker sticker-top-right"><use href="#bunny"/></svg>
-  <svg class="sticker sticker-left"><use href="#cat"/></svg>
+      <h3>Your special day is coming...</h3>
+      <div class="countdown" id="countdown">
+        <div class="time-unit"><strong id="days">00</strong><span>Days</span></div>
+        <div class="time-unit"><strong id="hours">00</strong><span>Hours</span></div>
+        <div class="time-unit"><strong id="minutes">00</strong><span>Minutes</span></div>
+        <div class="time-unit"><strong id="seconds">00</strong><span>Seconds</span></div>
+      </div>
+      <p class="small-note">December 4, 2026 ♡</p>
+    </section>
 
-  <div class="container">
-    <p class="small-heading">Little moments</p>
-    <h2>Our Memories</h2>
-    <p class="subtitle">A collection of moments worth keeping.</p>
+    <!-- PHOTO GALLERY -->
+    <section class="panel">
+      <div class="eyebrow">little moments, big feelings</div>
+      <h2>Our Little Memories ♡</h2>
+      <p class="section-intro">A few pictures that make me happy just by looking at them.</p>
 
-    <div class="gallery">
-      <div class="photo"><img src="bunny-photo-1.jpg" alt="Memory 1"></div>
-      <div class="photo"><img src="bunny-photo-2.jpg" alt="Memory 2"></div>
-      <div class="photo"><img src="bunny-photo-3.jpg" alt="Memory 3"></div>
-      <div class="photo"><img src="bunny-photo-4.jpg" alt="Memory 4"></div>
-      <div class="photo"><img src="bunny-photo-5.jpg" alt="Memory 5"></div>
-      <div class="photo"><img src="bunny-photo-6.jpg" alt="Memory 6"></div>
-      <div class="photo"><img src="bunny-photo-7.jpg" alt="Memory 7"></div>
-      <div class="photo"><img src="bunny-photo-8.jpg" alt="Memory 8"></div>
-    </div>
-  </div>
-</section>
-
-<!-- Reasons -->
-<section class="reasons-section" id="reasons">
-  <svg class="sticker sticker-left"><use href="#flower"/></svg>
-  <svg class="sticker sticker-right"><use href="#cuddle"/></svg>
-
-  <div class="container">
-    <p class="small-heading">A hundred little things</p>
-    <h2>Reasons I Love You</h2>
-    <p class="subtitle">Just a few of the many things that make you special.</p>
-
-    <div class="reasons-grid">
-      <!-- EDIT THESE REASONS -->
-      <div class="reason-card">♡ The way you make ordinary days feel special.</div>
-      <div class="reason-card">♡ Your personality and all your little quirks.</div>
-      <div class="reason-card">♡ The way you make me smile without trying.</div>
-      <div class="reason-card">♡ Simply being you.</div>
-    </div>
-  </div>
-</section>
-
-<!-- Secret letters -->
-<section class="letters-section" id="letters">
-  <svg class="sticker sticker-top-right"><use href="#cat"/></svg>
-  <svg class="sticker sticker-left"><use href="#bunny"/></svg>
-
-  <div class="container">
-    <p class="small-heading">Open when you're ready</p>
-    <h2>Little Love Letters</h2>
-    <p class="subtitle">Three little letters waiting just for you.</p>
-
-    <div class="letters-grid">
-
-      <div class="letter-card">
-        <div class="envelope">✉</div>
-        <h3>Open Me ♡</h3>
-        <button class="soft-button" onclick="toggleLetter(1)">Open letter</button>
-        <div class="letter-content" id="letter1">
-          <!-- EDIT LETTER ONE -->
-          A little reminder that you are appreciated, loved and special. I hope you never forget that. ♡
+      <div class="photo-grid">
+        <div class="photo-frame">
+          <div class="photo-placeholder">Add photo 1 here ♡</div>
+          <img src="bunny-photo-1.jpg" alt="Memory photo 1"
+               onload="photoLoaded(this)" onerror="photoFailed(this)">
+        </div>
+        <div class="photo-frame">
+          <div class="photo-placeholder">Add photo 2 here ♡</div>
+          <img src="bunny-photo-2.jpg" alt="Memory photo 2"
+               onload="photoLoaded(this)" onerror="photoFailed(this)">
+        </div>
+        <div class="photo-frame">
+          <div class="photo-placeholder">Add photo 3 here ♡</div>
+          <img src="bunny-photo-3.jpg" alt="Memory photo 3"
+               onload="photoLoaded(this)" onerror="photoFailed(this)">
+        </div>
+        <div class="photo-frame">
+          <div class="photo-placeholder">Add photo 4 here ♡</div>
+          <img src="bunny-photo-4.jpg" alt="Memory photo 4"
+               onload="photoLoaded(this)" onerror="photoFailed(this)">
+        </div>
+        <div class="photo-frame">
+          <div class="photo-placeholder">Add photo 5 here ♡</div>
+          <img src="bunny-photo-5.jpg" alt="Memory photo 5"
+               onload="photoLoaded(this)" onerror="photoFailed(this)">
+        </div>
+        <div class="photo-frame">
+          <div class="photo-placeholder">Add photo 6 here ♡</div>
+          <img src="bunny-photo-6.jpg" alt="Memory photo 6"
+               onload="photoLoaded(this)" onerror="photoFailed(this)">
+        </div>
+        <div class="photo-frame">
+          <div class="photo-placeholder">Add photo 7 here ♡</div>
+          <img src="bunny-photo-7.jpg" alt="Memory photo 7"
+               onload="photoLoaded(this)" onerror="photoFailed(this)">
+        </div>
+        <div class="photo-frame">
+          <div class="photo-placeholder">Add photo 8 here ♡</div>
+          <img src="bunny-photo-8.jpg" alt="Memory photo 8"
+               onload="photoLoaded(this)" onerror="photoFailed(this)">
         </div>
       </div>
 
-      <div class="letter-card">
-        <div class="envelope">✉</div>
-        <h3>A Little Reminder</h3>
-        <button class="soft-button" onclick="toggleLetter(2)">Open letter</button>
-        <div class="letter-content" id="letter2">
-          <!-- EDIT LETTER TWO -->
-          Even on your ordinary days, you deserve to feel celebrated. You matter more than you know. ♡
-        </div>
+      <div class="sticker-corner">
+        <svg class="sticker small"><use href="#bunny"/></svg>
+        <svg class="sticker small"><use href="#kitten"/></svg>
+      </div>
+    </section>
+
+    <!-- SONGS -->
+    <section class="panel">
+      <div class="eyebrow">press play and think of us</div>
+      <h2>Songs That Remind Me of You ♡</h2>
+      <p class="section-intro">Three little songs that make me think of you.</p>
+
+      <div class="song-card">
+        <p><strong>Song One ♡</strong></p>
+        <p class="small-note">Add your song title and artist later.</p>
+        <div id="spotifyOne" class="song-placeholder">Spotify song one will go here.</div>
       </div>
 
-      <div class="letter-card">
-        <div class="envelope">✉</div>
-        <h3>Just Because</h3>
-        <button class="soft-button" onclick="toggleLetter(3)">Open letter</button>
-        <div class="letter-content" id="letter3">
-          <!-- EDIT LETTER THREE -->
-          If you ever need a little smile, remember that someone is always wishing you the loveliest things. ♡
-        </div>
+      <div class="song-card">
+        <p><strong>Song Two ♡</strong></p>
+        <p class="small-note">Add your song title and artist later.</p>
+        <div id="spotifyTwo" class="song-placeholder">Spotify song two will go here.</div>
       </div>
 
+      <div class="song-card">
+        <p><strong>Song Three ♡</strong></p>
+        <p class="small-note">Add your song title and artist later.</p>
+        <div id="spotifyThree" class="song-placeholder">Spotify song three will go here.</div>
+      </div>
+    </section>
+
+    <!-- REASONS -->
+    <section class="panel">
+      <div class="eyebrow">a little reminder</div>
+      <h2>Reasons I Love You ♡</h2>
+      <p class="section-intro">There are so many, but here are a few that I never want you to forget.</p>
+
+      <div class="reason-list">
+        <div class="reason">I love how you make ordinary days feel special.</div>
+        <div class="reason">I love your silly side and the way you make me laugh.</div>
+        <div class="reason">I love how caring and thoughtful you can be.</div>
+        <div class="reason">I love the little things that make you, you.</div>
+        <div class="reason">I love getting to know more about you every day.</div>
+        <div class="reason">I love that I get to call you my Bunny.</div>
+      </div>
+
+      <div class="decor-row">
+        <svg class="sticker small"><use href="#flower"/></svg>
+        <svg class="sticker"><use href="#cuddle"/></svg>
+        <svg class="sticker small"><use href="#bow"/></svg>
+      </div>
+    </section>
+
+    <!-- LOVE LETTERS -->
+    <section class="panel">
+      <div class="eyebrow">open when you want a little love</div>
+      <h2>Secret Love Letters ♡</h2>
+      <p class="section-intro">Choose a little letter. Each one is just for you.</p>
+
+      <details class="letter">
+        <summary>Open when you miss me ♡</summary>
+        <div class="letter-content">My Bunny,
+
+If you're reading this because you miss me, I hope you know that you're always in my thoughts. Even when we're doing our own things, there's always a little part of my day that reminds me of you.
+
+I wish I could make the distance feel smaller. Until then, here's a little reminder that I love you.</div>
+      </details>
+
+      <details class="letter">
+        <summary>Open when you need a reminder ♡</summary>
+        <div class="letter-content">My love,
+
+I hope you never forget how special you are. You deserve kindness, patience, happiness, and all the good things life has to offer.
+
+Please be gentle with yourself. I'm always cheering for you.</div>
+      </details>
+
+      <details class="letter">
+        <summary>Open just because ♡</summary>
+        <div class="letter-content">Hi, pretty girl.
+
+I don't really need a special reason to tell you that I love you. I just do. I love the little conversations, the random moments, the teasing, and all the things that make us us.
+
+I'm really happy you're here.</div>
+      </details>
+    </section>
+
+    <!-- HIDDEN MESSAGES -->
+    <section class="panel">
+      <div class="eyebrow">psst... there are secrets here</div>
+      <h2>Hidden Messages ♡</h2>
+      <p class="section-intro">Tap each little note to reveal what's inside.</p>
+
+      <button class="hidden-message" type="button" aria-expanded="false"
+              onclick="toggleMessage(this)">
+        A tiny secret for you...
+        <span>You are one of my favorite parts of every day. ♡</span>
+      </button>
+
+      <button class="hidden-message" type="button" aria-expanded="false"
+              onclick="toggleMessage(this)">
+        Another little secret...
+        <span>If I could choose again, I'd still want to know you and love you. ♡</span>
+      </button>
+
+      <button class="hidden-message" type="button" aria-expanded="false"
+              onclick="toggleMessage(this)">
+        One last thing...
+        <span>Don't forget that someone out here thinks you're incredibly special. ♡</span>
+      </button>
+    </section>
+
+    <!-- LAST MESSAGE LINK -->
+    <section class="panel center">
+      <svg class="sticker large"><use href="#cuddle"/></svg>
+      <h2>That's not all...</h2>
+      <p class="subtitle">I saved one last little message just for you.</p>
+      <button class="button" id="endingButton" type="button">Open my last message ♡</button>
+    </section>
+
+    <footer>made with so much love, just for Bunny ♡</footer>
+  </div>
+</main>
+
+<!-- ENDING PAGE -->
+<section id="ending">
+  <div class="ending-card">
+    <div class="eyebrow">and that's my little surprise</div>
+    <div class="decor-row">
+      <svg class="sticker"><use href="#flower"/></svg>
+      <svg class="sticker large"><use href="#cuddle"/></svg>
+      <svg class="sticker"><use href="#bow"/></svg>
     </div>
+
+    <h1>Happy Birthday, Bunny! ♡</h1>
+    <p class="subtitle">
+      I hope your day is filled with happiness, warmth, and all the little
+      things that make you smile. You deserve to feel loved today and every day.
+    </p>
+
+    <h2>I love you so much. ♡</h2>
+    <p class="subtitle">
+      Thank you for being you. Here's to more memories, more laughter,
+      more silly moments, and more days with you.
+    </p>
+
+    <p style="font-size:25px;color:#c17d90;margin-top:25px;">Forever your biggest fan ♡</p>
+    <p class="small-note">Made with love, especially for you.</p>
   </div>
 </section>
 
-<!-- Hidden messages -->
-<section class="hidden-section" id="hidden">
-  <svg class="sticker sticker-left"><use href="#cuddle"/></svg>
-  <svg class="sticker sticker-right"><use href="#flower"/></svg>
+<!-- BACKGROUND MUSIC -->
+<audio id="backgroundMusic" src="background-lofi.mp3" loop preload="none"></audio>
 
-  <div class="container">
-    <p class="small-heading">Psst... a little secret</p>
-    <h2>Hidden Little Messages</h2>
-    <p class="subtitle">Tap the little surprises to reveal something.</p>
-
-    <div class="hidden-grid">
-      <button class="hidden-button" onclick="revealMessage(1)">A secret ♡</button>
-      <button class="hidden-button" onclick="revealMessage(2)">For you 🌸</button>
-      <button class="hidden-button" onclick="revealMessage(3)">One more!</button>
-      <button class="hidden-button" onclick="revealMessage(4)">A tiny surprise</button>
-    </div>
-
-    <div class="hidden-result" id="hiddenResult"></div>
-  </div>
-</section>
-
-<!-- Playful questions -->
-<section class="tease-section" id="questions">
-  <svg class="sticker sticker-top-right"><use href="#bunny"/></svg>
-  <svg class="sticker sticker-left"><use href="#cat"/></svg>
-
-  <div class="container">
-    <p class="small-heading">Be honest now</p>
-    <h2>Some Very Important Questions</h2>
-    <p class="subtitle">Choose wisely, Bunny. I'm watching. ♡</p>
-
-    <!-- QUESTION ONE -->
-    <div class="question-card">
-      <h3>Do you love me?</h3>
-      <div class="answer-buttons">
-        <button class="soft-button" onclick="answer(this,'yes','I knew it! You cannot escape my love. ♡')">YES</button>
-        <button class="soft-button" onclick="answer(this,'no','Excuse me?! I demand a recount. 😤')">NO</button>
-      </div>
-      <p class="answer-result"></p>
-    </div>
-
-    <!-- QUESTION TWO -->
-    <div class="question-card">
-      <h3>Am I your favorite person?</h3>
-      <div class="answer-buttons">
-        <button class="soft-button" onclick="answer(this,'yes','Correct answer. You get a gold star. ♡')">YES</button>
-        <button class="soft-button" onclick="answer(this,'no','Wrong answer. Please try again. 😭')">NO</button>
-      </div>
-      <p class="answer-result"></p>
-    </div>
-
-    <!-- QUESTION THREE -->
-    <div class="question-card">
-      <h3>Would you choose me again?</h3>
-      <div class="answer-buttons">
-        <button class="soft-button" onclick="answer(this,'yes','Good. I would choose you too. ♡')">YES</button>
-        <button class="soft-button" onclick="answer(this,'no','I'm pretending I did not see that. 😔')">NO</button>
-      </div>
-      <p class="answer-result"></p>
-    </div>
-
-    <!-- QUESTION FOUR -->
-    <div class="question-card">
-      <h3>Do I deserve extra kisses today?</h3>
-      <div class="answer-buttons">
-        <button class="soft-button" onclick="answer(this,'yes','As you should know. Lots of them! ♡')">YES</button>
-        <button class="soft-button" onclick="answer(this,'no','That answer has been rejected. 😤')">NO</button>
-      </div>
-      <p class="answer-result"></p>
-    </div>
-
-  </div>
-</section>
-
-<!-- Spotify music -->
-<section class="music-section" id="music">
-  <svg class="sticker sticker-left"><use href="#bunny"/></svg>
-  <svg class="sticker sticker-right"><use href="#cat"/></svg>
-
-  <div class="container">
-    <p class="small-heading">A little playlist for you</p>
-    <h2>Songs That Remind Me of You</h2>
-    <p class="subtitle">Three songs, and a thousand little feelings.</p>
-
-    <div class="music-grid">
-
-      <div class="music-card">
-        <h3>♡ Song One</h3>
-        <!-- REPLACE YOUR_SPOTIFY_TRACK_ID_1 WITH A REAL SPOTIFY TRACK ID -->
-        <iframe
-          src="https://open.spotify.com/embed/track/YOUR_SPOTIFY_TRACK_ID_1?utm_source=generator"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy">
-        </iframe>
-      </div>
-
-      <div class="music-card">
-        <h3>♡ Song Two</h3>
-        <!-- REPLACE YOUR_SPOTIFY_TRACK_ID_2 WITH A REAL SPOTIFY TRACK ID -->
-        <iframe
-          src="https://open.spotify.com/embed/track/YOUR_SPOTIFY_TRACK_ID_2?utm_source=generator"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy">
-        </iframe>
-      </div>
-
-      <div class="music-card">
-        <h3>♡ Song Three</h3>
-        <!-- REPLACE YOUR_SPOTIFY_TRACK_ID_3 WITH A REAL SPOTIFY TRACK ID -->
-        <iframe
-          src="https://open.spotify.com/embed/track/YOUR_SPOTIFY_TRACK_ID_3?utm_source=generator"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy">
-        </iframe>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer>
-  <svg class="sticker" style="position:relative;margin:auto;display:block">
-    <use href="#cuddle"/>
-  </svg>
-  <p>Made with love, just for Bunny.</p>
-  <p>♡ 𓂃 ࣪˖ ִֶָ 🌸 ♡</p>
-  <p style="font-size:.85rem">Happy Birthday, my favorite person.</p>
-</footer>
+<div id="musicPlayer">
+  <button id="musicToggle" type="button" aria-label="Play or pause music">▶</button>
+  <span id="musicLabel">a little melody ♡</span>
+</div>
 
 <script>
+"use strict";
 
-/* Sakura animation across the entire website */
+/* ------------------------------------------
+   BIRTHDAY DATE
+   December is month 11 because JavaScript
+   counts months starting at zero.
+------------------------------------------ */
 
-const sakura = document.getElementById("sakura");
+const birthdayDate = new Date(2026, 11, 4, 0, 0, 0);
 
-for (let i = 0; i < 25; i++) {
-  const petal = document.createElement("div");
-  petal.className = "petal";
+/* ------------------------------------------
+   TEASER QUESTIONS
+------------------------------------------ */
 
-  petal.style.left = Math.random() * 100 + "%";
-  petal.style.animationDuration = (9 + Math.random() * 12) + "s";
-  petal.style.animationDelay = (-Math.random() * 20) + "s";
-  petal.style.setProperty(
-    "--drift",
-    (Math.random() * 180 - 90) + "px"
-  );
-  petal.style.opacity = (0.35 + Math.random() * 0.5);
-  petal.style.transform = "scale(" + (0.6 + Math.random() * 0.8) + ")";
+const questions = [
+  {
+    text: "Are you ready for a little surprise?",
+    yes: "I knew you would be! But wait, I have more questions.",
+    no: "Too bad hehe. You're already here, so let's continue. ♡"
+  },
+  {
+    text: "Do I deserve some of your attention today?",
+    yes: "YAY! I was hoping you'd say yes. Give me all of it. ♡",
+    no: "Excuse me?! I'll accept just a tiny bit then. Hehe."
+  },
+  {
+    text: "Do you think someone loves you very, very much?",
+    yes: "Correct answer! And that someone made this little surprise for you.",
+    no: "Wrong answer! Let me show you just how much. ♡"
+  },
+  {
+    text: "Okay, Bunny... should we open your surprise now?",
+    yes: "That's what I wanted to hear! Get ready, pretty girl. ♡",
+    no: "You're making me wait? Hehe. One last chance..."
+  }
+];
 
-  sakura.appendChild(petal);
+let currentQuestion = 0;
+let questionLocked = false;
+
+const questionNumber = document.getElementById("questionNumber");
+const questionText = document.getElementById("questionText");
+const questionResponse = document.getElementById("questionResponse");
+const yesButton = document.getElementById("yesButton");
+const noButton = document.getElementById("noButton");
+const answerButtons = document.getElementById("answerButtons");
+const revealButton = document.getElementById("revealButton");
+
+function answerQuestion(answer) {
+  if (questionLocked) return;
+
+  questionLocked = true;
+
+  const current = questions[currentQuestion];
+
+  questionResponse.textContent =
+    answer === "yes" ? current.yes : current.no;
+
+  yesButton.disabled = true;
+  noButton.disabled = true;
+
+  window.setTimeout(function () {
+    currentQuestion++;
+
+    if (currentQuestion < questions.length) {
+      questionNumber.textContent = "QUESTION " + (currentQuestion + 1);
+      questionText.textContent = questions[currentQuestion].text;
+      questionResponse.textContent = "";
+      yesButton.disabled = false;
+      noButton.disabled = false;
+      questionLocked = false;
+    } else {
+      questionNumber.textContent = "ONE LAST THING ♡";
+      questionText.textContent = "Well then... your surprise is waiting.";
+      questionResponse.textContent = "Are you ready to see it, Bunny?";
+      answerButtons.classList.add("hidden");
+      revealButton.classList.remove("hidden");
+      questionLocked = false;
+    }
+  }, 1300);
 }
 
-/* Birthday countdown */
+yesButton.addEventListener("click", function () {
+  answerQuestion("yes");
+});
+
+noButton.addEventListener("click", function () {
+  answerQuestion("no");
+});
+
+/* ------------------------------------------
+   OPEN THE BIRTHDAY WEBSITE
+------------------------------------------ */
+
+function openBirthday() {
+  document.getElementById("opening").style.display = "none";
+  document.getElementById("birthday").style.display = "block";
+  document.getElementById("musicPlayer").style.display = "flex";
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+
+  const music = document.getElementById("backgroundMusic");
+
+  music.play().then(function () {
+    updateMusicButton(true);
+  }).catch(function () {
+    document.getElementById("musicLabel").textContent =
+      "tap play for music ♡";
+    updateMusicButton(false);
+  });
+}
+
+revealButton.addEventListener("click", openBirthday);
+
+/* ------------------------------------------
+   PHOTO PLACEHOLDERS
+------------------------------------------ */
+
+function photoLoaded(image) {
+  const placeholder = image.previousElementSibling;
+
+  if (placeholder) {
+    placeholder.style.display = "none";
+  }
+
+  image.style.display = "block";
+}
+
+function photoFailed(image) {
+  image.style.display = "none";
+}
+
+/* ------------------------------------------
+   HIDDEN MESSAGE BUTTONS
+------------------------------------------ */
+
+function toggleMessage(button) {
+  const isOpen = button.classList.toggle("open");
+  button.setAttribute("aria-expanded", String(isOpen));
+}
+
+/* ------------------------------------------
+   BACKGROUND MUSIC PLAYER
+------------------------------------------ */
+
+const backgroundMusic = document.getElementById("backgroundMusic");
+const musicToggle = document.getElementById("musicToggle");
+const musicLabel = document.getElementById("musicLabel");
+
+function updateMusicButton(isPlaying) {
+  musicToggle.textContent = isPlaying ? "Ⅱ" : "▶";
+  musicToggle.setAttribute(
+    "aria-label",
+    isPlaying ? "Pause music" : "Play music"
+  );
+}
+
+function toggleMusic() {
+  if (backgroundMusic.paused) {
+    backgroundMusic.play().then(function () {
+      updateMusicButton(true);
+      musicLabel.textContent = "a little melody ♡";
+    }).catch(function () {
+      updateMusicButton(false);
+      musicLabel.textContent = "add background-lofi.mp3 ♡";
+    });
+  } else {
+    backgroundMusic.pause();
+    updateMusicButton(false);
+    musicLabel.textContent = "music paused ♡";
+  }
+}
+
+musicToggle.addEventListener("click", toggleMusic);
+
+backgroundMusic.addEventListener("ended", function () {
+  updateMusicButton(false);
+});
+
+/* ------------------------------------------
+   COUNTDOWN
+------------------------------------------ */
 
 function updateCountdown() {
-  const birthday = new Date(2026, 11, 4, 0, 0, 0);
   const now = new Date();
-  const difference = birthday - now;
+  const distance = birthdayDate.getTime() - now.getTime();
 
-  if (difference <= 0) {
-    document.getElementById("days").textContent = "00";
-    document.getElementById("hours").textContent = "00";
-    document.getElementById("minutes").textContent = "00";
-    document.getElementById("seconds").textContent = "00";
-    document.getElementById("countdownMessage").textContent =
-      "It's your special day! Happy Birthday, Bunny! ♡";
+  const countdown = document.getElementById("countdown");
+
+  if (distance <= 0) {
+    countdown.textContent = "It's your special day, Bunny! ♡";
     return;
   }
 
-  const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((difference / (1000 * 60)) % 60);
-  const seconds = Math.floor((difference / 1000) % 60);
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((distance / (1000 * 60)) % 60);
+  const seconds = Math.floor((distance / 1000) % 60);
 
-  document.getElementById("days").textContent = String(days).padStart(2, "0");
-  document.getElementById("hours").textContent = String(hours).padStart(2, "0");
-  document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
-  document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
-
-  document.getElementById("countdownMessage").textContent =
-    "Every second brings us closer to your day. ♡";
+  document.getElementById("days").textContent = days;
+  document.getElementById("hours").textContent = hours;
+  document.getElementById("minutes").textContent = minutes;
+  document.getElementById("seconds").textContent = seconds;
 }
 
 updateCountdown();
-setInterval(updateCountdown, 1000);
+window.setInterval(updateCountdown, 1000);
 
-/* Open and close love letters */
+/* ------------------------------------------
+   ENDING PAGE
+------------------------------------------ */
 
-function toggleLetter(number) {
-  const letter = document.getElementById("letter" + number);
-  letter.classList.toggle("open");
+function showEnding() {
+  document.getElementById("birthday").style.display = "none";
+  document.getElementById("ending").style.display = "grid";
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-/* Hidden messages */
+document.getElementById("endingButton").addEventListener("click", showEnding);
 
-const secretMessages = {
-  1: "You are one of my favorite parts of every day. ♡",
-  2: "I hope life is always gentle with you, Bunny. 🌸",
-  3: "If I could give you one thing, it would be the ability to see yourself the way the people who love you see you.",
-  4: "Surprise! You are very, very loved. 🐰"
-};
+/* ------------------------------------------
+   FALLING SAKURA PETALS
+------------------------------------------ */
 
-function revealMessage(number) {
-  const result = document.getElementById("hiddenResult");
-  result.textContent = secretMessages[number];
-  result.style.display = "block";
+const petalArea = document.getElementById("petals");
+
+for (let i = 0; i < 22; i++) {
+  const petal = document.createElement("div");
+
+  petal.className = "petal";
+  petal.style.left = (Math.random() * 100) + "%";
+  petal.style.animationDuration = (9 + Math.random() * 12) + "s";
+  petal.style.animationDelay = (Math.random() * -20) + "s";
+  petal.style.opacity = String(0.25 + Math.random() * 0.5);
+  petalArea.appendChild(petal);
 }
 
-/* Teasing question responses */
+/* ------------------------------------------
+   OPTIONAL SPOTIFY TRACKS
 
-function answer(button, choice, message) {
-  const card = button.closest(".question-card");
-  const result = card.querySelector(".answer-result");
-  result.textContent = message;
-}
+   To add a Spotify song later:
+   1. Get its Spotify track ID.
+   2. Replace the empty value below.
+   3. Add the song title and artist in its card.
+------------------------------------------ */
 
+const spotifyTrackIds = ["", "", ""];
+const spotifyTargets = ["spotifyOne", "spotifyTwo", "spotifyThree"];
+
+spotifyTrackIds.forEach(function (trackId, index) {
+  if (!trackId) return;
+
+  if (!/^[a-zA-Z0-9]+$/.test(trackId)) return;
+
+  const target = document.getElementById(spotifyTargets[index]);
+  const frame = document.createElement("iframe");
+
+  frame.src = "https://open.spotify.com/embed/track/" +
+    encodeURIComponent(trackId);
+
+  frame.title = "Spotify song " + (index + 1);
+  frame.loading = "lazy";
+  frame.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
+
+  target.textContent = "";
+  target.className = "";
+  target.appendChild(frame);
+});
 </script>
 
 </body>
 </html>
+
