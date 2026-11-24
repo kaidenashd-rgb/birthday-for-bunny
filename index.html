@@ -39,6 +39,8 @@ body {
 button { font-family: inherit; cursor: pointer; }
 button:disabled { opacity: .55; cursor: default; }
 
+.hidden { display: none !important; }
+
 .page {
   width: min(900px, 92%);
   margin: 0 auto;
@@ -272,6 +274,27 @@ p { line-height: 1.8; }
   background: #f9e9ed;
 }
 
+/* Separate teasing corner */
+
+#teasingCorner .question-box {
+  max-width: 540px;
+  margin: 25px auto 10px;
+}
+
+#teaseQuestion {
+  color: var(--deep);
+  font-size: 21px;
+  line-height: 1.6;
+}
+
+#teaseResponse {
+  min-height: 55px;
+  color: #ad7180;
+  font-size: 14px;
+  line-height: 1.7;
+  padding: 0 8px;
+}
+
 /* Reasons */
 
 .reason-list {
@@ -471,71 +494,78 @@ footer {
 
 <body>
 
-<!-- Illustrated sticker collection -->
+<!-- Redesigned kawaii sticker collection -->
 <svg xmlns="http://www.w3.org/2000/svg"
      style="position:absolute;width:0;height:0;overflow:hidden"
      aria-hidden="true">
 <defs>
 
 <symbol id="bunny" viewBox="0 0 120 120">
-  <ellipse cx="43" cy="31" rx="13" ry="29" fill="#fffaf7" stroke="#d9b7bb" stroke-width="2" transform="rotate(-13 43 31)"/>
-  <ellipse cx="76" cy="29" rx="13" ry="30" fill="#fffaf7" stroke="#d9b7bb" stroke-width="2" transform="rotate(12 76 29)"/>
-  <ellipse cx="43" cy="31" rx="6" ry="20" fill="#f3c7d0" transform="rotate(-13 43 31)"/>
-  <ellipse cx="76" cy="29" rx="6" ry="21" fill="#f3c7d0" transform="rotate(12 76 29)"/>
-  <circle cx="60" cy="72" r="37" fill="#fffaf7" stroke="#d9b7bb" stroke-width="2"/>
-  <circle cx="47" cy="69" r="3" fill="#77545c"/>
-  <circle cx="73" cy="69" r="3" fill="#77545c"/>
-  <ellipse cx="60" cy="79" rx="4" ry="3" fill="#d88e9f"/>
-  <path d="M56 84 Q60 89 64 84" fill="none" stroke="#9b6873" stroke-width="1.8" stroke-linecap="round"/>
-  <ellipse cx="37" cy="79" rx="7" ry="4" fill="#f5c4cd"/>
-  <ellipse cx="83" cy="79" rx="7" ry="4" fill="#f5c4cd"/>
-  <path d="M79 49 Q91 38 97 49 Q91 60 79 49Z" fill="#e9a6b5" stroke="#d38b9d" stroke-width="1.5"/>
-  <circle cx="88" cy="49" r="3" fill="#fff5f5"/>
+  <ellipse cx="42" cy="30" rx="12" ry="29" fill="#fffaf7" stroke="#d9b7bb" stroke-width="3" transform="rotate(-12 42 30)"/>
+  <ellipse cx="77" cy="29" rx="12" ry="29" fill="#fffaf7" stroke="#d9b7bb" stroke-width="3" transform="rotate(12 77 29)"/>
+  <ellipse cx="42" cy="30" rx="5" ry="20" fill="#f3c7d0" transform="rotate(-12 42 30)"/>
+  <ellipse cx="77" cy="29" rx="5" ry="20" fill="#f3c7d0" transform="rotate(12 77 29)"/>
+  <circle cx="60" cy="74" r="36" fill="#fffaf7" stroke="#d9b7bb" stroke-width="3"/>
+  <circle cx="47" cy="69" r="3.5" fill="#77545c"/>
+  <circle cx="73" cy="69" r="3.5" fill="#77545c"/>
+  <ellipse cx="60" cy="79" rx="5" ry="4" fill="#e99aaa"/>
+  <path d="M55 85 Q60 91 65 85" fill="none" stroke="#9b6873" stroke-width="2.5" stroke-linecap="round"/>
+  <ellipse cx="38" cy="80" rx="8" ry="5" fill="#f5c4cd"/>
+  <ellipse cx="82" cy="80" rx="8" ry="5" fill="#f5c4cd"/>
+  <path d="M78 49 Q90 36 100 48 Q91 62 78 49Z" fill="#e9a6b5" stroke="#d38b9d" stroke-width="2"/>
+  <circle cx="89" cy="49" r="3" fill="#fff5f5"/>
+  <path d="M18 37 Q23 29 28 37 Q23 45 18 37Z" fill="#edb4c1"/>
+  <path d="M96 90 Q101 82 106 90 Q101 98 96 90Z" fill="#edb4c1"/>
 </symbol>
 
 <symbol id="kitten" viewBox="0 0 120 120">
-  <path d="M26 50 L25 19 Q27 12 34 19 L52 37 Q60 34 68 37 L87 19 Q94 13 96 21 L94 53" fill="#f4e5dc" stroke="#c9aaa0" stroke-width="2"/>
-  <path d="M33 27 L34 47 L48 39Z M87 27 L85 47 L72 39Z" fill="#edb8c1"/>
-  <circle cx="60" cy="70" r="39" fill="#f4e5dc" stroke="#c9aaa0" stroke-width="2"/>
-  <path d="M43 66 Q49 59 54 66 M67 66 Q73 59 78 66" fill="none" stroke="#70545a" stroke-width="2.5" stroke-linecap="round"/>
-  <path d="M57 76 Q60 80 63 76" fill="#d88e9f"/>
-  <path d="M60 80 Q55 87 50 82 M60 80 Q65 87 70 82" fill="none" stroke="#9c7076" stroke-width="1.6"/>
-  <ellipse cx="36" cy="78" rx="7" ry="4" fill="#edb7c0"/>
-  <ellipse cx="84" cy="78" rx="7" ry="4" fill="#edb7c0"/>
-  <path d="M30 76 L12 72 M30 82 L12 84 M90 76 L108 72 M90 82 L108 84" stroke="#b99a92" stroke-width="1.5" stroke-linecap="round"/>
-  <path d="M78 39 Q88 30 96 39 Q88 48 78 39Z" fill="#e6a0b0"/>
-  <circle cx="87" cy="39" r="3" fill="#fff"/>
+  <path d="M25 49 L24 17 Q26 9 35 18 L53 38 Q60 35 67 38 L86 18 Q95 10 97 20 L94 52" fill="#f4e5dc" stroke="#c9aaa0" stroke-width="3"/>
+  <path d="M32 26 L34 47 L49 40Z M88 26 L85 47 L71 40Z" fill="#edb8c1"/>
+  <circle cx="60" cy="72" r="39" fill="#f4e5dc" stroke="#c9aaa0" stroke-width="3"/>
+  <path d="M43 67 Q49 59 54 67 M67 67 Q73 59 78 67" fill="none" stroke="#70545a" stroke-width="3" stroke-linecap="round"/>
+  <path d="M56 77 Q60 82 64 77" fill="#d88e9f"/>
+  <path d="M60 81 Q55 88 50 83 M60 81 Q65 88 70 83" fill="none" stroke="#9c7076" stroke-width="2"/>
+  <ellipse cx="36" cy="81" rx="8" ry="5" fill="#edb7c0"/>
+  <ellipse cx="84" cy="81" rx="8" ry="5" fill="#edb7c0"/>
+  <path d="M30 76 L12 72 M30 84 L12 86 M90 76 L108 72 M90 84 L108 86" stroke="#b99a92" stroke-width="2" stroke-linecap="round"/>
+  <path d="M79 39 Q89 28 99 39 Q89 50 79 39Z" fill="#e6a0b0"/>
+  <circle cx="89" cy="39" r="3" fill="#fff"/>
+  <path d="M14 35 Q20 25 26 35 Q20 45 14 35Z" fill="#f2c4cd"/>
 </symbol>
 
 <symbol id="cuddle" viewBox="0 0 150 120">
-  <ellipse cx="73" cy="91" rx="58" ry="18" fill="#f1d9dc"/>
-  <ellipse cx="56" cy="70" rx="35" ry="31" fill="#fffaf7" stroke="#d9b7bb" stroke-width="2"/>
-  <ellipse cx="43" cy="38" rx="9" ry="23" fill="#fffaf7" stroke="#d9b7bb" stroke-width="2" transform="rotate(-12 43 38)"/>
-  <ellipse cx="69" cy="37" rx="9" ry="23" fill="#fffaf7" stroke="#d9b7bb" stroke-width="2" transform="rotate(12 69 37)"/>
-  <circle cx="48" cy="69" r="2.5" fill="#77545c"/>
-  <circle cx="65" cy="69" r="2.5" fill="#77545c"/>
-  <path d="M54 76 Q57 80 60 76" fill="none" stroke="#a66e7c" stroke-width="1.5"/>
-  <ellipse cx="99" cy="75" rx="31" ry="27" fill="#f4e5dc" stroke="#c9aaa0" stroke-width="2"/>
-  <path d="M76 57 L75 35 Q77 29 83 35 L96 48 M108 48 L121 35 Q127 31 128 38 L125 60" fill="#f4e5dc" stroke="#c9aaa0" stroke-width="2"/>
-  <path d="M82 40 L84 52 L94 49Z M117 41 L115 52 L105 49Z" fill="#edb8c1"/>
-  <path d="M91 72 Q96 66 101 72 M108 72 Q113 66 117 72" fill="none" stroke="#70545a" stroke-width="2" stroke-linecap="round"/>
-  <path d="M102 78 Q105 81 108 78" fill="none" stroke="#a66e7c" stroke-width="1.5"/>
-  <path d="M83 91 Q76 80 69 85" fill="none" stroke="#fffaf7" stroke-width="8" stroke-linecap="round"/>
-  <path d="M22 24 Q29 12 36 24 Q29 33 22 24Z" fill="#e7a7b5"/>
+  <ellipse cx="75" cy="100" rx="64" ry="14" fill="#f1d9dc"/>
+  <ellipse cx="55" cy="72" rx="35" ry="32" fill="#fffaf7" stroke="#d9b7bb" stroke-width="3"/>
+  <ellipse cx="42" cy="38" rx="9" ry="23" fill="#fffaf7" stroke="#d9b7bb" stroke-width="2"/>
+  <ellipse cx="69" cy="37" rx="9" ry="23" fill="#fffaf7" stroke="#d9b7bb" stroke-width="2"/>
+  <ellipse cx="42" cy="38" rx="4" ry="16" fill="#f3c7d0"/>
+  <ellipse cx="69" cy="37" rx="4" ry="16" fill="#f3c7d0"/>
+  <circle cx="48" cy="70" r="2.5" fill="#77545c"/>
+  <circle cx="65" cy="70" r="2.5" fill="#77545c"/>
+  <path d="M54 77 Q57 81 60 77" fill="none" stroke="#a66e7c" stroke-width="2"/>
+  <ellipse cx="99" cy="76" rx="32" ry="27" fill="#f4e5dc" stroke="#c9aaa0" stroke-width="3"/>
+  <path d="M77 58 L75 34 Q77 27 84 35 L97 49 M108 49 L121 34 Q128 28 129 38 L125 61" fill="#f4e5dc" stroke="#c9aaa0" stroke-width="3"/>
+  <path d="M83 40 L85 52 L95 49Z M117 40 L114 52 L105 49Z" fill="#edb8c1"/>
+  <path d="M90 73 Q96 66 101 73 M108 73 Q114 66 119 73" fill="none" stroke="#70545a" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M102 79 Q105 82 108 79" fill="none" stroke="#a66e7c" stroke-width="2"/>
+  <path d="M82 91 Q73 79 66 85" fill="none" stroke="#fffaf7" stroke-width="9" stroke-linecap="round"/>
+  <path d="M23 23 Q30 11 37 23 Q30 34 23 23Z" fill="#e7a7b5"/>
+  <path d="M119 17 Q125 8 131 17 Q125 26 119 17Z" fill="#e7a7b5"/>
+  <path d="M72 13 C62 2 49 17 72 31 C95 17 82 2 72 13Z" fill="#ed9eae"/>
 </symbol>
 
 <symbol id="flower" viewBox="0 0 100 100">
-  <g fill="#f5cbd3" stroke="#dfa8b4" stroke-width="1.5">
+  <g fill="#f5cbd3" stroke="#dfa8b4" stroke-width="2">
     <ellipse cx="50" cy="25" rx="13" ry="20"/>
     <ellipse cx="50" cy="75" rx="13" ry="20"/>
     <ellipse cx="25" cy="50" rx="20" ry="13"/>
     <ellipse cx="75" cy="50" rx="20" ry="13"/>
-    <ellipse cx="32" cy="32" rx="13" ry="19" transform="rotate(-45 32 32)"/>
-    <ellipse cx="68" cy="32" rx="13" ry="19" transform="rotate(45 68 32)"/>
-    <ellipse cx="32" cy="68" rx="13" ry="19" transform="rotate(45 32 68)"/>
-    <ellipse cx="68" cy="68" rx="13" ry="19" transform="rotate(-45 68 68)"/>
+    <ellipse cx="32" cy="32" rx="13" ry="19"/>
+    <ellipse cx="68" cy="32" rx="13" ry="19"/>
+    <ellipse cx="32" cy="68" rx="13" ry="19"/>
+    <ellipse cx="68" cy="68" rx="13" ry="19"/>
   </g>
-  <circle cx="50" cy="50" r="13" fill="#e7b66f"/>
+  <circle cx="50" cy="50" r="14" fill="#e7b66f"/>
   <circle cx="45" cy="46" r="3" fill="#fff0c7"/>
 </symbol>
 
@@ -555,7 +585,7 @@ footer {
 <!-- OPENING TEASER -->
 <section id="opening">
   <div class="opening-card">
-    <div class="eyebrow">a tiny little something ♡</div>
+    <div class="eyebrow">just a little something ♡</div>
 
     <div class="decor-row">
       <svg class="sticker"><use href="#bunny"/></svg>
@@ -617,9 +647,9 @@ footer {
 
     <!-- PHOTO GALLERY -->
     <section class="panel">
-      <div class="eyebrow">little moments, big feelings</div>
+      <div class="eyebrow">little moments, Silly banters</div>
       <h2>Our Little Memories ♡</h2>
-      <p class="section-intro">A few pictures that make me happy just by looking at them.</p>
+      <p class="section-intro">A few pictures that make me giggle just by looking at them.</p>
 
       <div class="photo-grid">
         <div class="photo-frame">
@@ -628,37 +658,30 @@ footer {
                onload="photoLoaded(this)" onerror="photoFailed(this)">
         </div>
         <div class="photo-frame">
-    
-        <img src="IMG_6978.jpeg" alt="Memory photo 2"
+          <img src="IMG_6978.jpeg" alt="Memory photo 2"
                onload="photoLoaded(this)" onerror="photoFailed(this)">
         </div>
         <div class="photo-frame">
-          
           <img src="IMG_6971.jpeg" alt="Memory photo 3"
                onload="photoLoaded(this)" onerror="photoFailed(this)">
         </div>
         <div class="photo-frame">
-         
           <img src="IMG_6943.jpeg" alt="Memory photo 4"
                onload="photoLoaded(this)" onerror="photoFailed(this)">
         </div>
         <div class="photo-frame">
-
           <img src="IMG_6940.jpeg" alt="Memory photo 5"
                onload="photoLoaded(this)" onerror="photoFailed(this)">
         </div>
         <div class="photo-frame">
-       
           <img src="bunny-photo-6.jpeg.jpeg" alt="Memory photo 6"
                onload="photoLoaded(this)" onerror="photoFailed(this)">
         </div>
         <div class="photo-frame">
-         
           <img src="IMG_6778.jpeg" alt="Memory photo 7"
                onload="photoLoaded(this)" onerror="photoFailed(this)">
         </div>
         <div class="photo-frame">
-         
           <img src="IMG_6452.jpeg" alt="Memory photo 8"
                onload="photoLoaded(this)" onerror="photoFailed(this)">
         </div>
@@ -670,6 +693,40 @@ footer {
       </div>
     </section>
 
+    <!-- SEPARATE TEASING CORNER -->
+    <section class="panel center" id="teasingCorner">
+      <div class="eyebrow">a very important little quiz</div>
+
+      <div class="decor-row">
+        <svg class="sticker"><use href="#cuddle"/></svg>
+        <svg class="sticker small"><use href="#flower"/></svg>
+      </div>
+
+      <h2>A Little Teasing Corner ♡</h2>
+      <p class="section-intro">
+        Bunny, I have a few more questions for you.
+        Choose your answers wisely. Hehe.
+      </p>
+
+      <div class="question-box">
+        <div class="eyebrow" id="teaseNumber">QUESTION 1</div>
+        <p id="teaseQuestion">So, will you play with me today?</p>
+
+        <div id="teaseButtons">
+          <button class="button" type="button" id="teaseYes">Yes ♡</button>
+          <button class="button secondary" type="button" id="teaseNo">No hehe</button>
+        </div>
+
+        <p id="teaseResponse" aria-live="polite"></p>
+
+        <button class="button hidden" type="button" id="teaseNext">
+          Next question ♡
+        </button>
+      </div>
+
+      <p class="small-note">Careful, Bunny. I might remember your answers. ♡</p>
+    </section>
+
     <!-- SONGS -->
     <section class="panel">
       <div class="eyebrow">press play and think of us</div>
@@ -678,42 +735,45 @@ footer {
 
       <div class="song-card">
         <p><strong>Song One ♡</strong></p>
-        <p class="small-note">Add your song title and artist later.</p>
-     <iframe
-    style="border-radius:12px"
-    src="https://open.spotify.com/embed/track/7LbUv7w2z7rEbNqp1uIL9U"
-    width="100%"
-    height="152"
-    frameborder="0"
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-    loading="lazy">
-</iframe>
+        <p class="small-note">This because it's you fav</p>
+        <iframe
+          style="border-radius:12px"
+          src="https://open.spotify.com/embed/track/7LbUv7w2z7rEbNqp1uIL9U"
+          width="100%"
+          height="152"
+          frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy">
+        </iframe>
+      </div>
 
       <div class="song-card">
         <p><strong>Song Two ♡</strong></p>
-        <p class="small-note">Add your song title and artist later.</p>
- <iframe
-    style="border-radius:12px"
-    src="https://open.spotify.com/embed/track/1wicceeNVtcnym2YjiOmyj"
-    width="100%"
-    height="152"
-    frameborder="0"
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-    loading="lazy">
-</iframe>
+        <p class="small-note">We both really like this so it reminds me of you</p>
+        <iframe
+          style="border-radius:12px"
+          src="https://open.spotify.com/embed/track/1wicceeNVtcnym2YjiOmyj"
+          width="100%"
+          height="152"
+          frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy">
+        </iframe>
+      </div>
 
       <div class="song-card">
         <p><strong>Song Three ♡</strong></p>
-        <p class="small-note">Add your song title and artist later.</p>
- <iframe
-    style="border-radius:12px"
-    src="https://open.spotify.com/embed/track/7JIuqL4ZqkpfGKQhYlrirs"
-    width="100%"
-    height="152"
-    frameborder="0"
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-    loading="lazy">
-</iframe>
+        <p class="small-note">The title speaks for it self hehe</p>
+        <iframe
+          style="border-radius:12px"
+          src="https://open.spotify.com/embed/track/7JIuqL4ZqkpfGKQhYlrirs"
+          width="100%"
+          height="152"
+          frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy">
+        </iframe>
+      </div>
     </section>
 
     <!-- REASONS -->
@@ -728,7 +788,7 @@ footer {
         <div class="reason">I love how caring and thoughtful you can be.</div>
         <div class="reason">I love the little things that make you, you.</div>
         <div class="reason">I love getting to know more about you every day.</div>
-        <div class="reason">I love that I get to call you my Bunny.</div>
+        <div class="reason">I am so grateful to have met someone like you.</div>
       </div>
 
       <div class="decor-row">
@@ -750,14 +810,14 @@ footer {
 
 If you're reading this because you miss me, I hope you know that you're always in my thoughts. Even when we're doing our own things, there's always a little part of my day that reminds me of you.
 
-I wish I could make the distance feel smaller. Until then, here's a little reminder that I love you.</div>
+I wish I could make the distance feel smaller. Until then, here's a little reminder that Im always here for you.</div>
       </details>
 
       <details class="letter">
         <summary>Open when you need a reminder ♡</summary>
         <div class="letter-content">My love,
 
-I hope you never forget how special you are. You deserve kindness, patience, happiness, and all the good things life has to offer.
+I hope you never forget how special you are. You deserve kindness, patience, happiness, and all the good things life has to offer so i'd wish for you to stop saying you wanna die T.T.
 
 Please be gentle with yourself. I'm always cheering for you.</div>
       </details>
@@ -787,13 +847,13 @@ I'm really happy you're here.</div>
       <button class="hidden-message" type="button" aria-expanded="false"
               onclick="toggleMessage(this)">
         Another little secret...
-        <span>If I could choose again, I'd still want to know you and love you. ♡</span>
+        <span>If I could choose again, I'd still want to know you im every universe. ♡</span>
       </button>
 
       <button class="hidden-message" type="button" aria-expanded="false"
               onclick="toggleMessage(this)">
         One last thing...
-        <span>Don't forget that someone out here thinks you're incredibly special. ♡</span>
+        <span>Don't forget that someone 12,000km away thinks you're very special. ♡</span>
       </button>
     </section>
 
@@ -805,7 +865,7 @@ I'm really happy you're here.</div>
       <button class="button" id="endingButton" type="button">Open my last message ♡</button>
     </section>
 
-    <footer>made with so much love, just for Bunny ♡</footer>
+    <footer>made with so much effort, just for you Bunny ♡</footer>
   </div>
 </main>
 
@@ -825,23 +885,23 @@ I'm really happy you're here.</div>
       things that make you smile. You deserve to feel loved today and every day.
     </p>
 
-    <h2>I love you so much. ♡</h2>
+    <h2>I love you bunnyy. ♡</h2>
     <p class="subtitle">
       Thank you for being you. Here's to more memories, more laughter,
       more silly moments, and more days with you.
     </p>
 
     <p style="font-size:25px;color:#c17d90;margin-top:25px;">Forever your biggest fan ♡</p>
-    <p class="small-note">Made with love, especially for you.</p>
+    <p class="small-note">Made with love, from your kittyuh.</p>
   </div>
 </section>
 
 <!-- BACKGROUND MUSIC -->
-<audio id="backgroundMusic" src="background-lofi.mp3.mp3" loop preload="none"></audio>
+<audio id="backgroundMusic" src="background-lofi.mp3.mp3" loop preload="auto"></audio>
 
 <div id="musicPlayer">
   <button id="musicToggle" type="button" aria-label="Play or pause music">▶</button>
-  <span id="musicLabel">a little melody ♡</span>
+  <span id="musicLabel">hehe ♡</span>
 </div>
 
 <script>
@@ -849,14 +909,12 @@ I'm really happy you're here.</div>
 
 /* ------------------------------------------
    BIRTHDAY DATE
-   December is month 11 because JavaScript
-   counts months starting at zero.
 ------------------------------------------ */
 
 const birthdayDate = new Date(2026, 11, 4, 0, 0, 0);
 
 /* ------------------------------------------
-   TEASER QUESTIONS
+   OPENING TEASER QUESTIONS
 ------------------------------------------ */
 
 const questions = [
@@ -866,18 +924,18 @@ const questions = [
     no: "Too bad hehe. You're already here, so let's continue. ♡"
   },
   {
-    text: "Do I deserve some of your attention today?",
+    text: "Do I deserve your undivided attention today?",
     yes: "YAY! I was hoping you'd say yes. Give me all of it. ♡",
     no: "Excuse me?! I'll accept just a tiny bit then. Hehe."
   },
   {
-    text: "Do you think someone loves you very, very much?",
+    text: "Do you think someone cares for you very, very much?",
     yes: "Correct answer! And that someone made this little surprise for you.",
     no: "Wrong answer! Let me show you just how much. ♡"
   },
   {
     text: "Okay, Bunny... should we open your surprise now?",
-    yes: "That's what I wanted to hear! Get ready, pretty girl. ♡",
+    yes: "That's what I wanted to hear! Get ready, ♡",
     no: "You're making me wait? Hehe. One last chance..."
   }
 ];
@@ -947,6 +1005,7 @@ function openBirthday() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 
   const music = document.getElementById("backgroundMusic");
+  music.volume = 0.35;
 
   music.play().then(function () {
     updateMusicButton(true);
@@ -966,7 +1025,7 @@ revealButton.addEventListener("click", openBirthday);
 function photoLoaded(image) {
   const placeholder = image.previousElementSibling;
 
-  if (placeholder) {
+  if (placeholder && placeholder.classList.contains("photo-placeholder")) {
     placeholder.style.display = "none";
   }
 
@@ -985,6 +1044,120 @@ function toggleMessage(button) {
   const isOpen = button.classList.toggle("open");
   button.setAttribute("aria-expanded", String(isOpen));
 }
+
+/* ------------------------------------------
+   SEPARATE TEASING CORNER
+------------------------------------------ */
+
+const teaseQuestions = [
+  {
+    text: "So, will you play with me today?",
+    yes: [
+      "YAY! I was hoping you'd say yes! ♡",
+      "Hehe, then you're officially mine for playtime.",
+      "Good! I already have a whole day of ragebaiting you planned."
+    ],
+    no: [
+      "Oh? I'll just sit here dramatically waiting then. 😔",
+      "Not even a little bit? u meanie.",
+      "Fineee. I'll just have to convince you some more."
+    ]
+  },
+  {
+    text: "Do I deserve some of your attention today?",
+    yes: [
+      "As I should! I want all your attention. ♡",
+      "That's the answer I was waiting for!",
+      "Good! Your attention has been successfully requested."
+    ],
+    no: [
+      "Excuse me?! I'll be filing a tiny complaint. ♡",
+      "Wow. Rejected. Unbelievable.",
+      "I'll accept just five minutes. Okay, maybe fifty."
+    ]
+  },
+  {
+    text: "Am I your favorite person in the whole universe?",
+    yes: [
+      "CORRECT! You may collect your good girl reward. ♡",
+      "I knew it! No further questions for now.",
+      "Hehe, that's exactly what I wanted to hear."
+    ],
+    no: [
+      "Wrong answer. Please retake this question, Bunny. Hehe.",
+      "I'm going to pretend I didn't hear that.",
+      "WHAT?! That's suspicious!"
+    ]
+  }
+];
+
+let teaseIndex = 0;
+let teaseLocked = false;
+
+const teaseNumber = document.getElementById("teaseNumber");
+const teaseQuestion = document.getElementById("teaseQuestion");
+const teaseResponse = document.getElementById("teaseResponse");
+const teaseButtons = document.getElementById("teaseButtons");
+const teaseYes = document.getElementById("teaseYes");
+const teaseNo = document.getElementById("teaseNo");
+const teaseNext = document.getElementById("teaseNext");
+
+function answerTease(answer) {
+  if (teaseLocked) return;
+
+  teaseLocked = true;
+
+  const question = teaseQuestions[teaseIndex];
+  const responses = answer === "yes" ? question.yes : question.no;
+  const randomResponse =
+    responses[Math.floor(Math.random() * responses.length)];
+
+  teaseResponse.textContent = randomResponse;
+
+  teaseButtons.classList.add("hidden");
+  teaseNext.classList.remove("hidden");
+
+  if (teaseIndex === teaseQuestions.length - 1) {
+    teaseNext.textContent = "Finish ♡";
+  } else {
+    teaseNext.textContent = "Next question ♡";
+  }
+}
+
+function nextTeaseQuestion() {
+  if (!teaseLocked) return;
+
+  teaseIndex++;
+  teaseLocked = false;
+
+  if (teaseIndex >= teaseQuestions.length) {
+    teaseNumber.textContent = "QUIZ COMPLETED ♡";
+    teaseQuestion.textContent =
+      "Hehe, thank you for answering my questions, Bunny!";
+    teaseResponse.textContent =
+      "I hope you know you're still my favorite person. I love you! ♡";
+
+    teaseNext.classList.add("hidden");
+    return;
+  }
+
+  teaseNumber.textContent = "QUESTION " + (teaseIndex + 1);
+  teaseQuestion.textContent = teaseQuestions[teaseIndex].text;
+  teaseResponse.textContent = "";
+
+  teaseButtons.classList.remove("hidden");
+  teaseNext.classList.add("hidden");
+}
+
+teaseYes.addEventListener("click", function () {
+  answerTease("yes");
+});
+
+teaseNo.addEventListener("click", function () {
+  answerTease("no");
+});
+
+teaseNext.addEventListener("click", nextTeaseQuestion);
 
 /* ------------------------------------------
    BACKGROUND MUSIC PLAYER
@@ -1006,10 +1179,10 @@ function toggleMusic() {
   if (backgroundMusic.paused) {
     backgroundMusic.play().then(function () {
       updateMusicButton(true);
-      musicLabel.textContent = "a little melody ♡";
+      musicLabel.textContent = "hehe ♡";
     }).catch(function () {
       updateMusicButton(false);
-      musicLabel.textContent = "add background-lofi.mp3 ♡";
+      musicLabel.textContent = "check background-lofi.mp3 ♡";
     });
   } else {
     backgroundMusic.pause();
@@ -1020,7 +1193,11 @@ function toggleMusic() {
 
 musicToggle.addEventListener("click", toggleMusic);
 
-backgroundMusic.addEventListener("ended", function () {
+backgroundMusic.addEventListener("play", function () {
+  updateMusicButton(true);
+});
+
+backgroundMusic.addEventListener("pause", function () {
   updateMusicButton(false);
 });
 
@@ -1081,40 +1258,7 @@ for (let i = 0; i < 22; i++) {
   petal.style.opacity = String(0.25 + Math.random() * 0.5);
   petalArea.appendChild(petal);
 }
-
-/* ------------------------------------------
-   OPTIONAL SPOTIFY TRACKS
-
-   To add a Spotify song later:
-   1. Get its Spotify track ID.
-   2. Replace the empty value below.
-   3. Add the song title and artist in its card.
------------------------------------------- */
-
-const spotifyTrackIds = ["", "", ""];
-const spotifyTargets = ["spotifyOne", "spotifyTwo", "spotifyThree"];
-
-spotifyTrackIds.forEach(function (trackId, index) {
-  if (!trackId) return;
-
-  if (!/^[a-zA-Z0-9]+$/.test(trackId)) return;
-
-  const target = document.getElementById(spotifyTargets[index]);
-  const frame = document.createElement("iframe");
-
-  frame.src = "https://open.spotify.com/embed/track/" +
-    encodeURIComponent(trackId);
-
-  frame.title = "Spotify song " + (index + 1);
-  frame.loading = "lazy";
-  frame.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
-
-  target.textContent = "";
-  target.className = "";
-  target.appendChild(frame);
-});
 </script>
 
 </body>
 </html>
-
